@@ -57,6 +57,7 @@
     <Compile Include="IBoxer.cs" />
     <Compile Include="IMovable.cs" />
     <Compile Include="IPlayer.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="MovableUnit.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Prize.cs" />

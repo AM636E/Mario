@@ -21,13 +21,13 @@ namespace Mario
         public BitMapSprite(string path)
         {
             this.bitmap = new Bitmap(path);
+            this.width = bitmap.Width;
+            this.height = bitmap.Height;
         }
 
         public BitMapSprite(Point position, string path)
             :this( path )
         {
-            this.width = bitmap.Width;
-            this.height = bitmap.Height;
             this.position = position;
         }
 

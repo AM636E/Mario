@@ -11,7 +11,6 @@ namespace Mario
     {
         private Player _player;
 
-
         private Timer _gameLoop;
 
         private Form _canvas;
@@ -35,14 +34,14 @@ namespace Mario
         }
 
         public Game(string pathToXml)
-        {
-        }
+        { }
 
         public Game(Form canvas)
         {
             _canvas = canvas;
             CreateGraphics();
             _gameLoop = new Timer();
+            Logger.Clear();
         }
 
         public Game(Form canvas, int width, int height)
@@ -72,9 +71,12 @@ namespace Mario
 
         private void _player_MovedLeft(object sender, EventArgs e)
         {
-            if (_player.UpRightX >= _canvasWidth)
+            Logger.Log(" ----------------------------- ");
+            Logger.Log("width: " + _player.Image.Width.ToString());
+            Logger.Log("uprightx: " + _player.UpRightX.ToString());
+            Logger.Log(" ----------------------------- ");
+            if (_player.UpRightX >= 1000)
             {
-                MessageBox.Show(_player.UpRightX.ToString());
                 _stopMove = true;
             }
         }

@@ -28,6 +28,7 @@ namespace Mario
 
         public void MoveLeft()
         {
+            Logger.Log("Movable Unit Width: " + this.Width.ToString());
             this.X += STEP;
             if (MovedLeft != null)
             {

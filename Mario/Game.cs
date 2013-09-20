@@ -21,29 +21,34 @@ namespace Mario
         public Graphics Graphics { get { return _graphics; } set { _graphics = value; } }
         public int GameLoopInterval { get { return _gameLoop.Interval; } set { _gameLoop.Interval = value; } }
 
+        public Game(string pathToXml)
+        {
+        }
+
         public Game(Form canvas)
         {
             _canvas = canvas;
-            _graphics = _canvas.CreateGraphics();
+          // _graphics = _canvas.CreateGraphics();
+            CretateGraphics();
             _gameLoop = new Timer();
         }
 
-        public Game(int width, int height, Form canvas)
+        public Game(Form canvas, int width, int height)
             :this( canvas )
         {
             _canvas.Width = _canvasWidth = width;
             _canvas.Height = _canvasHeight = height;
+            CretateGraphics();
+
         }
 
-        public Game(Player player, Form canvas, int width, int height)
-            : this(width, height, canvas)
+        public Game(Form canvas, Player player,  int width, int height)
+            : this(canvas, width, height)
         {
             _player = player;
         }
 
-        public Game(string pathToXml)
-        {
-        }
+        
 
         public void Start()
         {
@@ -57,9 +62,9 @@ namespace Mario
 
         private void _player_MovedLeft(object sender, EventArgs e)
         {
-            if (_player.UpRightX > _canvasWidth)
+            if (_player.UpRightX >= _canvasWidth)
             {
-                _stopMove = true;
+                _stopMove = true;                   
             }
         }
 
@@ -74,6 +79,11 @@ namespace Mario
                 _player.MoveLeft();
                 _player.Draw(_graphics);
             }
+        }
+
+        public void CretateGraphics()
+        {
+            _graphics = _canvas.CreateGraphics();
         }
 
         /*DBG*/

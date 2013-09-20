@@ -28,13 +28,12 @@ namespace Mario
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _game = new Game(_p, this, 1000, 500);
+            _game = new Game(this,_p,  1000, 50000);
             _game.Start();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
         }
     }
 }

@@ -19,7 +19,19 @@ namespace Mario
         private int _canvasHeight;
 
         public Graphics Graphics { get { return _graphics; } set { _graphics = value; } }
-        public int GameLoopInterval { get { return _gameLoop.Interval; } set { _gameLoop.Interval = value; } }
+        public int GameLoopInterval
+        {
+            get
+            {
+                return _gameLoop.Interval;
+            }
+            set
+            {
+                _gameLoop.Stop();
+                _gameLoop.Interval = value;
+                _gameLoop.Start();
+            }
+        }
 
         public Game(string pathToXml)
         {
@@ -28,8 +40,7 @@ namespace Mario
         public Game(Form canvas)
         {
             _canvas = canvas;
-          // _graphics = _canvas.CreateGraphics();
-            CretateGraphics();
+            CreateGraphics();
             _gameLoop = new Timer();
         }
 
@@ -38,7 +49,7 @@ namespace Mario
         {
             _canvas.Width = _canvasWidth = width;
             _canvas.Height = _canvasHeight = height;
-            CretateGraphics();
+            CreateGraphics();
 
         }
 
@@ -46,9 +57,7 @@ namespace Mario
             : this(canvas, width, height)
         {
             _player = player;
-        }
-
-        
+        }        
 
         public void Start()
         {
@@ -62,9 +71,10 @@ namespace Mario
 
         private void _player_MovedLeft(object sender, EventArgs e)
         {
-            if (_player.UpRightX >= _canvasWidth)
+            if (_player.UpRightX -500 >= _canvasWidth)
             {
-                _stopMove = true;                   
+                MessageBox.Show(_player.UpRightX.ToString());
+                _stopMove = true;              
             }
         }
 
@@ -74,16 +84,26 @@ namespace Mario
 
         private void _gameLoop_Tick(object sender, EventArgs e)
         {
-            if (!_stopMove)
+            if (_stopMove != true)
             {
                 _player.MoveLeft();
-                _player.Draw(_graphics);
+                _canvas.Invalidate();
             }
         }
 
-        public void CretateGraphics()
+        public void CreateGraphics()
         {
             _graphics = _canvas.CreateGraphics();
+        }
+
+        public void UpdateView(Graphics g)
+        {
+            _player.Draw(g);
+        }
+
+        public void UpdateView()
+        {
+            _player.Draw(_graphics);
         }
 
         /*DBG*/

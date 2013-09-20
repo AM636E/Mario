@@ -28,12 +28,14 @@ namespace Mario
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _game = new Game(this,_p,  1000, 50000);
+            _game = new Game(this,_p,  1000, 500);
             _game.Start();
+            _game.GameLoopInterval = 100;
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            _game.UpdateView();
         }
     }
 }

@@ -14,7 +14,6 @@ namespace Mario
         public int Life { get { return life; } set { life = value; } }
 
         public Unit()
-
         {
         }
 

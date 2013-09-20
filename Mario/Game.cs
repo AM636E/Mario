@@ -11,6 +11,7 @@ namespace Mario
     {
         private Player _player;
 
+
         private Timer _gameLoop;
 
         private Form _canvas;
@@ -71,10 +72,10 @@ namespace Mario
 
         private void _player_MovedLeft(object sender, EventArgs e)
         {
-            if (_player.UpRightX -500 >= _canvasWidth)
+            if (_player.UpRightX >= _canvasWidth)
             {
                 MessageBox.Show(_player.UpRightX.ToString());
-                _stopMove = true;              
+                _stopMove = true;
             }
         }
 

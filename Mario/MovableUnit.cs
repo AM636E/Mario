@@ -5,31 +5,35 @@ using System.Text;
 
 namespace Mario
 {
-    public abstract class MovableUnit: Unit, IMovable
+    class MovableUnit: Unit, IMovable
     {
         public event EventHandler MovedLeft;
         public event EventHandler MovedRight;
 
+        public MovableUnit()
+            : base ()
+        {}
+
+        public MovableUnit(string bitmapPath) :
+            base(bitmapPath)
+        { }
+
         public MovableUnit(string bitmapPath, int life)
-            :base(bitmapPath)
-        {
-            this.life = life;
-        }
+            :base(bitmapPath, life)
+        {  }
 
         public MovableUnit(string bitmapPath, int life, System.Drawing.Point p)
-            :base(bitmapPath, life, p )
+            : base(bitmapPath, life, p)
         { }
 
         public void MoveLeft()
         {
             this.X += STEP;
-
             if (MovedLeft != null)
             {
                 MovedLeft(this, EventArgs.Empty);
             }
         }
-
         public void MoveRight()
         {
             this.X -= STEP;
@@ -38,6 +42,10 @@ namespace Mario
             {
                 MovedRight(this, EventArgs.Empty);
             }
+        }
+
+        public override void Dead()
+        {
         }
     }
 }

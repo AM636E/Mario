@@ -13,9 +13,7 @@ namespace Mario
 
         public Player(string bitmap, int life):
             base(bitmap, life )
-        {
-           // MovedLeft = new EventHandler(this, EventArgs.Empty);
-        }
+        { }
 
         public Player(string bitmap, int life, System.Drawing.Point p)
             :this(bitmap, life )

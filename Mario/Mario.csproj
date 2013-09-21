@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,7 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BitMapSprite.cs" />
+    <Compile Include="Interface\IUnitContainer.cs" />
+    <Compile Include="Sprite\BitMapSprite.cs" />
+    <Compile Include="Prize\Box.cs" />
+    <Compile Include="Prize\Coin.cs" />
+    <Compile Include="Unit\Enemy.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,17 +59,17 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Game.cs" />
-    <Compile Include="IBoxer.cs" />
-    <Compile Include="IMovable.cs" />
-    <Compile Include="IPlayer.cs" />
+    <Compile Include="Interface\IBoxer.cs" />
+    <Compile Include="Interface\IMovable.cs" />
+    <Compile Include="Interface\IPlayer.cs" />
     <Compile Include="Logger.cs" />
-    <Compile Include="MovableUnit.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Prize.cs" />
+    <Compile Include="Unit\MovableUnit.cs" />
+    <Compile Include="Unit\Player.cs" />
+    <Compile Include="Prize\Prize.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sprite.cs" />
-    <Compile Include="Unit.cs" />
+    <Compile Include="Sprite\Sprite.cs" />
+    <Compile Include="Unit\Unit.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,6 +93,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

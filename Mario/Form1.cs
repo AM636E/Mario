@@ -16,7 +16,7 @@ namespace Mario
         {
             InitializeComponent();
 
-            _p = new Player(@"D:\GitHub\HTML_CSS_JAVASCRIPT\task3\memory_puzzle\images\2.jpg", 100);
+            _p = new Player(@"D:\GitHub\GDI+\GDI+\bin\Debug\images.jpg", 100);
             _p.MovedLeft += new EventHandler(_p_MovedLeft);
         }
 

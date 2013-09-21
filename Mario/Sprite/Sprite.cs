@@ -6,20 +6,12 @@ using System.Drawing;
 
 namespace Mario
 {
-    public enum ConflictType
-    {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        NONE,
-    }
-
     public  abstract class Sprite
     {
         protected Point position;
         protected int width;
         protected int height;
+        protected Rectangle rect;
 
         public int X { get { return position.X; } set { position.X = value; } }
         public int Y { get { return position.Y; } set { position.Y = value; } }
@@ -37,6 +29,7 @@ namespace Mario
         {
             position = new Point();
             isNeedUpdate = false;
+            rect = new Rectangle(position, new Size(0, 0));
         }
 
         public Sprite(Point position, int width, int height):
@@ -45,28 +38,50 @@ namespace Mario
             this.position = position;
             this.height = height;
             this.width = width;
+
+            rect = new Rectangle( position, new Size( width, height ) );
         }
 
         public abstract void Draw(Graphics g);
 
-      /*  public bool IsConflictedLeft(Sprite s)
+        public bool IsCollisedUp(Sprite s)
         {
-            return (UpRightX >= s.X && UpRightX <= s.UpRightX);
+            if (this.rect.IntersectsWith(s.rect) && this.Y >= s.Y)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public bool IsConflictedRight(Sprite s)
+        public bool IsCollisedBottom(Sprite s)
         {
-            return (X >= s.UpRightX && X <= s.X);
-        }
-        */
-        /*public bool IsUp(Rectangle r)
-        {
-            int distance = Math.Abs(r.Y - this.Y);
-        }*/
+            if (this.rect.IntersectsWith(s.rect) && this.Y <= s.Y)
+            {
+                return true;
+            }
 
-        public void CheckConflict(Sprite s)
+            return false;
+        }
+
+        public bool IsCollisedLeft(Sprite s)
         {
-            
+            if (this.rect.IntersectsWith(s.rect) && this.X < s.Y)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool IsCollisedRight(Sprite s)
+        {
+            if (this.rect.IntersectsWith(s.rect) && this.X > s.X)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

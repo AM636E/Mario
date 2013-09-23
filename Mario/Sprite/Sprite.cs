@@ -17,6 +17,8 @@ namespace Mario
 
     public  abstract class Sprite
     {
+        public event EventHandler NeedUpdateTrue;
+
         protected Point position;
         protected int width;
         protected int height;
@@ -32,6 +34,19 @@ namespace Mario
         public Point DownRight { get { return new Point(DownRightX, Y + height); } }
 
         protected bool isNeedUpdate;
+
+        public bool NeedUpdate
+        {
+            get { return isNeedUpdate; }
+            set
+            {
+                isNeedUpdate = value;
+                if (isNeedUpdate == true && NeedUpdateTrue != null)
+                {
+                    NeedUpdateTrue(this, EventArgs.Empty);
+                }
+            }
+        }
 
         public Sprite()
         {

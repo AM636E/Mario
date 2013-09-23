@@ -13,7 +13,9 @@ namespace Mario
 
         private Timer _gameLoop;
 
-        List<Box> _prizes;
+        Dictionary<Point, Box> _prizes;
+
+        List<Unit> _mustUpdate;
 
         private Form _canvas;
         private Graphics _graphics;
@@ -44,6 +46,11 @@ namespace Mario
             CreateGraphics();
             _gameLoop = new Timer();
             Logger.Clear();
+
+            _mustUpdate = new List<Unit>();
+            _prizes = new Dictionary<Point, Box>();
+
+
         }
 
         public Game(Form canvas, int width, int height)

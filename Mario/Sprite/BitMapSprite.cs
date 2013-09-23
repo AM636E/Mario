@@ -31,6 +31,14 @@ namespace Mario
             this.position = position;
         }
 
+        public BitMapSprite(Bitmap bitmap, Point position)
+        {
+            this.position = position;
+            this.width = bitmap.Width;
+            this.height = bitmap.Height;
+            this.bitmap = bitmap;
+        }
+
         public override void Draw(Graphics g)
         {
             g.DrawImage(bitmap, position);

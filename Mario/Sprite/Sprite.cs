@@ -8,11 +8,14 @@ namespace Mario
 {
     public  abstract class Sprite
     {
+        public event EventHandler NeedUpdateTrue;
+
         protected Point position;
         protected int width;
         protected int height;
         protected Rectangle rect;
 
+        public Point Position { get { return position; } }
         public int X { get { return position.X; } set { position.X = value; } }
         public int Y { get { return position.Y; } set { position.Y = value; } }
         public int Width { get { return width; } }
@@ -24,6 +27,19 @@ namespace Mario
         public Point DownRight { get { return new Point(DownRightX, Y + height); } }
 
         protected bool isNeedUpdate;
+
+        public bool NeedUpdate
+        {
+            get { return isNeedUpdate; }
+            set
+            {
+                isNeedUpdate = value;
+                if (isNeedUpdate == true && NeedUpdateTrue != null)
+                {
+                    NeedUpdateTrue(this, EventArgs.Empty);
+                }
+            }
+        }
 
         public Sprite()
         {
@@ -43,6 +59,7 @@ namespace Mario
         }
 
         public abstract void Draw(Graphics g);
+<<<<<<< HEAD
 
         public bool IsCollisedUp(Sprite s)
         {
@@ -83,5 +100,7 @@ namespace Mario
 
             return false;
         }
+=======
+>>>>>>> iss_update
     }
 }

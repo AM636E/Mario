@@ -15,8 +15,11 @@ namespace Mario
 
         public Unit()
             :base()
-        {
-        }
+        { }
+
+        public Unit(System.Drawing.Bitmap bitmap, System.Drawing.Point p)
+            : base(bitmap, p)
+        { }
 
         public Unit(string bitmapPath) :
             base(bitmapPath)

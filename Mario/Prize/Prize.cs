@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Mario
 {
-    public abstract class Prize: Unit
+    public class Prize: Unit
     {
         protected int cost;//score that prize add to player score
 
@@ -26,5 +26,13 @@ namespace Mario
         public Prize(string path, int life, System.Drawing.Point p)
             : base(path, life, p)
         { }
+
+        public Prize(System.Drawing.Bitmap bitmap, System.Drawing.Point p)
+            : base(bitmap, p)
+        { }
+
+        public override void Dead()
+        {
+        }
     }
 }

@@ -50,7 +50,11 @@ namespace Mario
             _mustUpdate = new List<Unit>();
             _prizes = new Dictionary<Point, Box>();
 
+            Point p = new Point(0, 500);
 
+            _prizes.Add(p, new Box(@"D:\GitHub\HTML_CSS_JAVASCRIPT\task3\memory_puzzle\images\2.jpg", 100, p));
+
+            _mustUpdate.Add(_prizes[p]);
         }
 
         public Game(Form canvas, int width, int height)
@@ -108,14 +112,49 @@ namespace Mario
             _graphics = _canvas.CreateGraphics();
         }
 
+        private void OnUnitNeedUpdate(object sender, EventArgs e)
+        {
+            _mustUpdate.Add(sender as Unit);
+        }
+
+        private void AddHandlers(Dictionary<Point, Box> items)
+        {
+            foreach (Unit u in items.Values)
+            {
+                u.NeedUpdateTrue += OnUnitNeedUpdate;
+            }
+        }
+
+        public List<Unit> NeedUpdate { get { return _mustUpdate; } }
+
+        public static void Draw(List<Unit> b, Graphics g )
+        {
+            foreach (Unit u in b)
+            {
+                u.Draw(g);
+            }
+        }
+
+        public void DrawList(Graphics g)
+        {
+            foreach (Unit u in _mustUpdate)
+            {
+                u.Draw(g);
+            }
+        }
         public void UpdateView(Graphics g)
         {
             _player.Draw(g);
+
+            foreach (Unit u in _mustUpdate)
+            {
+                u.Draw(g);
+            }            
         }
 
         public void UpdateView()
         {
-            _player.Draw(_graphics);
+            UpdateView(_graphics);
         }
 
         /*DBG*/

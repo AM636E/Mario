@@ -35,6 +35,7 @@ namespace Mario
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            Game.Draw(_game.NeedUpdate, e.Graphics);
             _game.UpdateView();
         }
     }

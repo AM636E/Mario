@@ -6,15 +6,6 @@ using System.Drawing;
 
 namespace Mario
 {
-    public enum ConflictType
-    {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        NONE,
-    }
-
     public  abstract class Sprite
     {
         public event EventHandler NeedUpdateTrue;
@@ -63,25 +54,5 @@ namespace Mario
         }
 
         public abstract void Draw(Graphics g);
-
-      /*  public bool IsConflictedLeft(Sprite s)
-        {
-            return (UpRightX >= s.X && UpRightX <= s.UpRightX);
-        }
-
-        public bool IsConflictedRight(Sprite s)
-        {
-            return (X >= s.UpRightX && X <= s.X);
-        }
-        */
-        /*public bool IsUp(Rectangle r)
-        {
-            int distance = Math.Abs(r.Y - this.Y);
-        }*/
-
-        public void CheckConflict(Sprite s)
-        {
-            
-        }
     }
 }

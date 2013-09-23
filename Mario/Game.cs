@@ -15,7 +15,7 @@ namespace Mario
 
         Dictionary<Point, Box> _prizes;
 
-        List<BitMapSprite> _mustUpdate;
+        List<Unit> _mustUpdate;
 
         private Form _canvas;
         private Graphics _graphics;
@@ -47,7 +47,7 @@ namespace Mario
             _gameLoop = new Timer();
             Logger.Clear();
 
-            _mustUpdate = new List<BitMapSprite>();
+            _mustUpdate = new List<Unit>();
             _prizes = new Dictionary<Point, Box>();
 
             Point p = new Point(0, 0);
@@ -125,13 +125,13 @@ namespace Mario
             }
         }
 
-        public List<BitMapSprite> NeedUpdate { get { return _mustUpdate; } }
+        public List<Unit> NeedUpdate { get { return _mustUpdate; } }
 
         public void UpdateView(Graphics g)
         {
          //     _player.Draw(g);
 
-            foreach (BitMapSprite toUpdate in _mustUpdate)
+            foreach (Unit toUpdate in _mustUpdate)
             {
                 toUpdate.Draw(g);
             }

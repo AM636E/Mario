@@ -129,7 +129,7 @@ namespace Mario
 
         public void UpdateView(Graphics g)
         {
-         //     _player.Draw(g);
+            _player.Draw(g);
 
             foreach (Unit toUpdate in _mustUpdate)
             {

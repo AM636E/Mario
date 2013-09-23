@@ -59,7 +59,7 @@ namespace Mario
         }
 
         public abstract void Draw(Graphics g);
-<<<<<<< HEAD
+
 
         public bool IsCollisedUp(Sprite s)
         {
@@ -100,7 +100,5 @@ namespace Mario
 
             return false;
         }
-=======
->>>>>>> iss_update
     }
 }

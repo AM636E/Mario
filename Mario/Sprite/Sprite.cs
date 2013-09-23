@@ -83,7 +83,7 @@ namespace Mario
 
         public bool IsCollisedLeft(Sprite s)
         {
-            if (this.rect.IntersectsWith(s.rect) && this.X < s.Y)
+            if (this.rect.IntersectsWith(s.rect) && this.X < s.X)
             {
                 return true;
             }

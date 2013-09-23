@@ -50,7 +50,7 @@ namespace Mario
             _mustUpdate = new List<Unit>();
             _prizes = new Dictionary<Point, Box>();
 
-            Point p = new Point(0, 0);
+            Point p = new Point(500, 00);
 
             _prizes.Add(p, new Box(@"D:\GitHub\HTML_CSS_JAVASCRIPT\task3\memory_puzzle\images\2.jpg", 100, p));
 
@@ -84,11 +84,8 @@ namespace Mario
 
         private void _player_MovedLeft(object sender, EventArgs e)
         {
-            Logger.Log(" ----------------------------- ");
-            Logger.Log("width: " + _player.Image.Width.ToString());
-            Logger.Log("uprightx: " + _player.UpRightX.ToString());
-            Logger.Log(" ----------------------------- ");
-            if (_player.UpRightX >= 1000)
+            Point p = _player.UpRight;
+            if (_player.IsCollisedLeft(_mustUpdate[0]))
             {
                 _stopMove = true;
             }

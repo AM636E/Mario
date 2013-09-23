@@ -13,6 +13,8 @@ namespace Mario
 
         private Timer _gameLoop;
 
+        List<Box> _prizes;
+
         private Form _canvas;
         private Graphics _graphics;
         private int _canvasWidth;

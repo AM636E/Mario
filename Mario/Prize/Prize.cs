@@ -19,7 +19,12 @@ namespace Mario
             : base(path)
         { }
 
-    /*    public Prize()
-            :base(*/
+        public Prize(string path, int life)
+            : base(path, life)
+        { }
+
+        public Prize(string path, int life, System.Drawing.Point p)
+            : base(path, life, p)
+        { }
     }
 }

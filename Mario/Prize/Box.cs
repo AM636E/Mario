@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Mario
 {
-    class Box: Prize
+    class Box : Prize
     {
         public Box()
-            :base()
+            : base()
         { }
 
         public Box(string path)
@@ -23,6 +23,9 @@ namespace Mario
             : base(path, life, p)
         { }
 
+        public Box(System.Drawing.Bitmap bitmap, System.Drawing.Point p)
+            : base(bitmap, p)
+        { }
 
         public override void Dead()
         {

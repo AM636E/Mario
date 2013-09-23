@@ -14,6 +14,7 @@ namespace Mario
         protected int width;
         protected int height;
 
+        public Point Position { get { return position; } }
         public int X { get { return position.X; } set { position.X = value; } }
         public int Y { get { return position.Y; } set { position.Y = value; } }
         public int Width { get { return width; } }

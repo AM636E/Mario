@@ -34,7 +34,6 @@ namespace Mario
             _game.GameLoopInterval = 100;
 
             this.KeyDown += _game.OnKeyPress;
-            this.KeyPress += _game.OnKeyPress;
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)

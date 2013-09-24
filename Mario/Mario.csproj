@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameUserInput.cs" />
     <Compile Include="Interface\IUnitContainer.cs" />
     <Compile Include="Sprite\BitMapSprite.cs" />
     <Compile Include="Prize\Box.cs" />

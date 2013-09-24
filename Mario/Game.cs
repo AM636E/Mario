@@ -55,6 +55,7 @@ namespace Mario
             _prizes.Add(p, new Box(@"D:\GitHub\HTML_CSS_JAVASCRIPT\task3\memory_puzzle\images\2.jpg", 100, p));
 
             _mustUpdate.Add(_prizes[p]);
+
         }
 
         public Game(Form canvas, int width, int height)

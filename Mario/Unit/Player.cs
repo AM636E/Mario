@@ -5,11 +5,26 @@ using System.Text;
 
 namespace Mario
 {
+    enum PlayerMotionState
+    {
+        MovingLeft,
+        MovindRight,
+        Jump,
+        JumpLeft,
+        JumpRight,
+        DoubleJump,
+        NotMoving,
+    }
+
     class Player: MovableUnit, IPlayer
     {
         public event EventHandler OnDead;
 
         private const int _POWER = 20;
+
+        private PlayerMotionState _motionState = PlayerMotionState.NotMoving;
+
+        public PlayerMotionState MotionState { get { return _motionState; } set { _motionState = value; } }
 
         public Player(string bitmap, int life):
             base(bitmap, life )

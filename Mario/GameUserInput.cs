@@ -7,6 +7,7 @@ namespace Mario
     {
         public void OnKeyPress(Object sender, KeyEventArgs e)
         {
+            
         }
     }
 }

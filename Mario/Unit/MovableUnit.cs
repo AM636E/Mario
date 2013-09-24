@@ -10,21 +10,25 @@ namespace Mario
         public event EventHandler MovedLeft;
         public event EventHandler MovedRight;
 
+        public delegate void Mover();
+
         public MovableUnit()
             : base ()
         {}
 
         public MovableUnit(string bitmapPath) :
             base(bitmapPath)
-        { }
+        {
+            movers.Add(Mario.MotionState.NotMoving, delegate() { });
+        }
 
         public MovableUnit(string bitmapPath, int life)
-            :base(bitmapPath, life)
-        {  }
+            :this(bitmapPath)
+        { this.life = life; }
 
         public MovableUnit(string bitmapPath, int life, System.Drawing.Point p)
-            : base(bitmapPath, life, p)
-        { }
+            : base(bitmapPath, life)
+        { this.position = p; }
 
         public void MoveLeft()
         {
@@ -48,5 +52,16 @@ namespace Mario
         public override void Dead()
         {
         }
+
+        public void Move()
+        {
+            this.movers[_motionState]();
+        }
+
+        protected Dictionary<MotionState, Mover> movers = new Dictionary<MotionState,Mover>();
+
+        protected MotionState _motionState = MotionState.NotMoving;
+
+        public MotionState MotionState { get { return _motionState; } set { _motionState = value; } }
     }
 }

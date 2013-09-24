@@ -9,5 +9,6 @@ namespace Mario
     {
         void MoveLeft();
         void MoveRight();
+        void Move();
     }
 }

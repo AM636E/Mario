@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Mario
 {
-    enum PlayerMotionState
+    enum MotionState
     {
         MovingLeft,
-        MovindRight,
+        MovingRight,
         Jump,
         JumpLeft,
         JumpRight,
@@ -22,13 +23,15 @@ namespace Mario
 
         private const int _POWER = 20;
 
-        private PlayerMotionState _motionState = PlayerMotionState.NotMoving;
-
-        public PlayerMotionState MotionState { get { return _motionState; } set { _motionState = value; } }
-
         public Player(string bitmap, int life):
             base(bitmap, life )
-        { }
+        {
+            Logger.Clear();
+            movers.Add(Mario.MotionState.MovingLeft, this.MoveLeft);
+            movers.Add(Mario.MotionState.MovingRight, this.MoveRight);
+            movers.Add(Mario.MotionState.JumpLeft, this.JumpLeft);
+            movers.Add(Mario.MotionState.Jump, this.Jump);
+        }
 
         public Player(string bitmap, int life, System.Drawing.Point p)
             :this(bitmap, life )
@@ -52,7 +55,12 @@ namespace Mario
 
         public void Jump()
         {
-            
+            Logger.Log("Jump");
+        }
+
+        public void JumpLeft()
+        {
+            Logger.Log("JumpLeft");
         }
     }
 }

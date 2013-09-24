@@ -13,7 +13,6 @@ namespace Mario
         protected Point position;
         protected int width;
         protected int height;
-        protected Rectangle rect;
 
         public Point Position { get { return position; } }
         public int X { get { return position.X; } set { position.X = value; } }
@@ -25,6 +24,8 @@ namespace Mario
 
         public Point UpRight { get { return new Point(UpRightX, Y); } }
         public Point DownRight { get { return new Point(DownRightX, Y + height); } }
+
+        public Rectangle Rectangle { get { return new Rectangle(this.Position, new Size(this.width, this.height)); } }
 
         protected bool isNeedUpdate;
 
@@ -45,7 +46,7 @@ namespace Mario
         {
             position = new Point();
             isNeedUpdate = false;
-            rect = new Rectangle(position, new Size(0, 0));
+            Rectangle = new Rectangle(position, new Size(0, 0));
         }
 
         public Sprite(Point position, int width, int height):
@@ -55,7 +56,7 @@ namespace Mario
             this.height = height;
             this.width = width;
 
-            rect = new Rectangle( position, new Size( width, height ) );
+            Rectangle = new Rectangle( position, new Size( width, height ) );
         }
 
         public abstract void Draw(Graphics g);
@@ -63,7 +64,7 @@ namespace Mario
 
         public bool IsCollisedUp(Sprite s)
         {
-            if (this.rect.IntersectsWith(s.rect) && this.Y >= s.Y)
+            if (this.Rectangle.IntersectsWith(s.Rectangle) && this.Y >= s.Y)
             {
                 return true;
             }
@@ -73,7 +74,7 @@ namespace Mario
 
         public bool IsCollisedBottom(Sprite s)
         {
-            if (this.rect.IntersectsWith(s.rect) && this.Y <= s.Y)
+            if (this.Rectangle.IntersectsWith(s.Rectangle) && this.Y <= s.Y)
             {
                 return true;
             }
@@ -83,7 +84,7 @@ namespace Mario
 
         public bool IsCollisedLeft(Sprite s)
         {
-            if (this.rect.IntersectsWith(s.rect) && this.X < s.X)
+            if (this.Rectangle.IntersectsWith(s.Rectangle) && this.X < s.X)
             {
                 return true;
             }
@@ -93,7 +94,7 @@ namespace Mario
 
         public bool IsCollisedRight(Sprite s)
         {
-            if (this.rect.IntersectsWith(s.rect) && this.X > s.X)
+            if (this.Rectangle.IntersectsWith(s.Rectangle) && this.X > s.X)
             {
                 return true;
             }

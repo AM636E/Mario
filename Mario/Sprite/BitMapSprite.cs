@@ -14,15 +14,16 @@ namespace Mario
 
         public BitMapSprite()
         {
-            bitmap = new Bitmap(0, 0);
+            bitmap = new Bitmap(1, 1);
             position = new Point();
         }
 
         public BitMapSprite(string path)
+          //  :this()
         {
             this.bitmap = new Bitmap(path);
             this.width = bitmap.Width;
-            this.height = bitmap.Height;
+            this.height = bitmap.Height;            
         }
 
         public BitMapSprite(Point position, string path)
@@ -36,7 +37,7 @@ namespace Mario
             this.position = position;
             this.width = bitmap.Width;
             this.height = bitmap.Height;
-            this.bitmap = bitmap;
+            this.bitmap = bitmap;           
         }
 
         public override void Draw(Graphics g)

@@ -46,7 +46,6 @@ namespace Mario
         {
             position = new Point();
             isNeedUpdate = false;
-            Rectangle = new Rectangle(position, new Size(0, 0));
         }
 
         public Sprite(Point position, int width, int height):
@@ -55,8 +54,6 @@ namespace Mario
             this.position = position;
             this.height = height;
             this.width = width;
-
-            Rectangle = new Rectangle( position, new Size( width, height ) );
         }
 
         public abstract void Draw(Graphics g);

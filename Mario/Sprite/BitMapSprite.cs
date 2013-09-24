@@ -19,7 +19,6 @@ namespace Mario
         }
 
         public BitMapSprite(string path)
-          //  :this()
         {
             this.bitmap = new Bitmap(path);
             this.width = bitmap.Width;

@@ -16,6 +16,8 @@ namespace Mario
         {
             InitializeComponent();
 
+            
+
             _p = new Player(@"D:\GitHub\GDI+\GDI+\bin\Debug\images.jpg", 100);
         }
 
@@ -30,6 +32,9 @@ namespace Mario
             _game = new Game(this, _p,  1000, 500);
             _game.Start();
             _game.GameLoopInterval = 100;
+
+            this.KeyDown += _game.OnKeyPress;
+            this.KeyPress += _game.OnKeyPress;
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)

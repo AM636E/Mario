@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Mario
 {
-    class Game
+    partial class Game
     {
         private Player _player;
 
@@ -93,6 +93,7 @@ namespace Mario
 
         private void _player_MovedRight(object sender, EventArgs e)
         {
+
         }
 
         private void _gameLoop_Tick(object sender, EventArgs e)

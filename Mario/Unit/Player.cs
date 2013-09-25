@@ -50,7 +50,7 @@ namespace Mario
 
         public void Kick(Unit s)
         {
-            s.Life = _POWER;       
+            s.Life -= _POWER;       
         }
 
         public void Jump()

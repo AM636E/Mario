@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Mario
 {
-    class MovableUnit: Unit, IMovable
+    class MovableUnit : Unit, IMovable
     {
         public event EventHandler MovedLeft;
         public event EventHandler MovedRight;
@@ -19,8 +19,8 @@ namespace Mario
         public bool CanMoveRight { get { return _canMoveRight; } set { _canMoveRight = value; } }
 
         public MovableUnit()
-            : base ()
-        {}
+            : base()
+        { }
 
         public MovableUnit(string bitmapPath) :
             base(bitmapPath)
@@ -29,43 +29,43 @@ namespace Mario
         }
 
         public MovableUnit(string bitmapPath, int life)
-            :this(bitmapPath)
+            : this(bitmapPath)
         { this.life = life; }
 
         public MovableUnit(string bitmapPath, int life, System.Drawing.Point p)
             : base(bitmapPath, life)
         { this.position = p; }
 
-
         /*
-         * Movers fires an event.
-         * Event handler checks if Unit can move
-         * and modifies needed property ( Move[MoveDiretion] )
+         * Move Event Just fires an event 
+         * Event handler must check if unit can move on
+         * and move or dont move unit
          */
-        public void MoveLeft()
+        public void FireMoveLeftEvent()
         {
             if (MovedLeft != null)
             {
                 MovedLeft(this, EventArgs.Empty);
             }
-
-            if (_canMoveLeft == true)
-            {
-                this.X -= STEP;
-            }
         }
 
-        public void MoveRight()
+        public void FireMoveRightEvent()
         {
             if (MovedRight != null)
             {
                 MovedRight(this, EventArgs.Empty);
             }
+        }
+        /*-------------------------------------------*/
 
-            if (_canMoveRight == true)
-            {
+        public void MoveLeft()
+        {
+            this.X -= STEP;
+        }
+
+        public void MoveRight()
+        {
                 this.X += STEP;
-            }
         }
         /*-------------------------------------------*/
 
@@ -78,7 +78,7 @@ namespace Mario
             this.movers[_motionState]();
         }
 
-        protected Dictionary<MotionState, Mover> movers = new Dictionary<MotionState,Mover>();
+        protected Dictionary<MotionState, Mover> movers = new Dictionary<MotionState, Mover>();
 
         protected MotionState _motionState = MotionState.NotMoving;
 

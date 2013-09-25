@@ -7,7 +7,7 @@ namespace Mario
 {
     public abstract class Unit: BitMapSprite
     {
-        protected const int STEP = 20;//number of pixels unit that unit step have
+        public const int STEP = 20;//number of pixels unit that unit step have
 
         protected int life;
 

@@ -7,8 +7,6 @@ namespace Mario
 {
     interface IMovable
     {
-        void MoveLeft();
-        void MoveRight();
         void Move();
     }
 }

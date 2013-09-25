@@ -30,24 +30,32 @@ namespace Mario
             : base(bitmapPath, life)
         { this.position = p; }
 
+
+        /*
+         * Movers fires an event.
+         * Event handler checks if Unit can move
+         * and modifies needed property ( Move[MoveDiretion] )
+         */
         public void MoveLeft()
-        {
-            Logger.Log("Movable Unit Width: " + this.Width.ToString());
-            this.X += STEP;
+        {           
             if (MovedLeft != null)
             {
                 MovedLeft(this, EventArgs.Empty);
             }
+            
+            this.X += STEP;
         }
+
         public void MoveRight()
         {
-            this.X -= STEP;
-
             if (MovedRight != null)
             {
                 MovedRight(this, EventArgs.Empty);
             }
+            
+            this.X -= STEP;
         }
+        /**/
 
         public override void Dead()
         {

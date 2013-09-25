@@ -19,7 +19,6 @@ namespace Mario
             if (_player.IsCollisedLeft(_mustUpdate[0]) == false)
             {
                 _player.Move();
- 
             }
         }
 

@@ -14,12 +14,6 @@ namespace Mario
 
         public delegate void Mover();
 
-        private bool _canMoveLeft = true;
-        private bool _canMoveRight = true;
-
-        public bool CanMoveLeft { get { return _canMoveLeft; } set { _canMoveLeft = value; } }
-        public bool CanMoveRight { get { return _canMoveRight; } set { _canMoveRight = value; } }
-
         public MovableUnit()
             : base()
         { }
@@ -41,12 +35,12 @@ namespace Mario
         /*
          * Move Event Just fires an event 
          * Event handler must check if unit can move on
-         * and move or dont move unit
-         */
-        public void FireMoveLeftEvent()
-        {
-            if (MovedLeft != null)
-            {
+         * and move or not move unit                   
+         */                                            
+        public void FireMoveLeftEvent()                
+        {                                              
+            if (MovedLeft != null)                     
+            {                                          
                 MovedLeft(this, EventArgs.Empty);
             }
         }

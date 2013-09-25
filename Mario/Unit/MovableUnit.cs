@@ -7,6 +7,8 @@ namespace Mario
 {
     class MovableUnit : Unit, IMovable
     {
+        public const int STEP = 20;//number of pixels unit that unit step have
+
         public event EventHandler MovedLeft;
         public event EventHandler MovedRight;
 
@@ -65,7 +67,7 @@ namespace Mario
 
         public void MoveRight()
         {
-                this.X += STEP;
+            this.X -= STEP;
         }
 
         public override void Dead()

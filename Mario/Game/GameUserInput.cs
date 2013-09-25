@@ -15,10 +15,10 @@ namespace Mario
             {
                 _player.MotionState = MotionState.MovingRight;
             }
-            if (e.KeyData == Keys.Up)
+      /*      if (e.KeyData == Keys.Up)
             {
                 _player.MotionState = MotionState.Jump;
-            }
+            }*/
         }
 
         public void OnKeyUp(Object sender, KeyEventArgs e)

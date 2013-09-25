@@ -18,10 +18,11 @@ namespace Mario
         {
             using (StreamWriter st = new StreamWriter(_path_, true))
             {
-                for ( var i in what )
+                foreach ( var i in what )
                 {
-                st.WriteLine(i);
-            }}
+                    st.WriteLine(i);
+                }
+            }
         }
 
         public static void Clear()

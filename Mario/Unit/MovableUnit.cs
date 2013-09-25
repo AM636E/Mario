@@ -12,6 +12,12 @@ namespace Mario
 
         public delegate void Mover();
 
+        private bool _canMoveLeft;
+        private bool _canMoveRight;
+
+        public bool CanMoveLeft { get { return _canMoveLeft; } set { _canMoveLeft = value; } }
+        public bool CanMoveRight { get { return _canMoveRight; } set { _canMoveRight = value; } }
+
         public MovableUnit()
             : base ()
         {}
@@ -37,13 +43,16 @@ namespace Mario
          * and modifies needed property ( Move[MoveDiretion] )
          */
         public void MoveLeft()
-        {           
+        {
             if (MovedLeft != null)
             {
                 MovedLeft(this, EventArgs.Empty);
             }
-            
-            this.X += STEP;
+
+            if (_canMoveLeft == true)
+            {
+                this.X += STEP;
+            }
         }
 
         public void MoveRight()
@@ -52,8 +61,11 @@ namespace Mario
             {
                 MovedRight(this, EventArgs.Empty);
             }
-            
-            this.X -= STEP;
+
+            if (_canMoveRight == true)
+            {
+                this.X -= STEP;
+            }
         }
         /*-------------------------------------------*/
 

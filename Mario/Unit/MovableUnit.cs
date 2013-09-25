@@ -12,8 +12,8 @@ namespace Mario
 
         public delegate void Mover();
 
-        private bool _canMoveLeft;
-        private bool _canMoveRight;
+        private bool _canMoveLeft = true;
+        private bool _canMoveRight = true;
 
         public bool CanMoveLeft { get { return _canMoveLeft; } set { _canMoveLeft = value; } }
         public bool CanMoveRight { get { return _canMoveRight; } set { _canMoveRight = value; } }
@@ -51,7 +51,7 @@ namespace Mario
 
             if (_canMoveLeft == true)
             {
-                this.X += STEP;
+                this.X -= STEP;
             }
         }
 
@@ -64,7 +64,7 @@ namespace Mario
 
             if (_canMoveRight == true)
             {
-                this.X -= STEP;
+                this.X += STEP;
             }
         }
         /*-------------------------------------------*/

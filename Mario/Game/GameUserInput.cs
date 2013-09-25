@@ -19,8 +19,6 @@ namespace Mario
             {
                 _player.MotionState = MotionState.Jump;
             }
-
-       //    MessageBox.Show(e.KeyData.ToString());
         }
 
         public void OnKeyUp(Object sender, KeyEventArgs e)

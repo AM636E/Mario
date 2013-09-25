@@ -14,12 +14,14 @@ namespace Mario
 
         }
 
-        public static void Log(string what)
+        public static void Log(params string[] what)
         {
             using (StreamWriter st = new StreamWriter(_path_, true))
             {
-                st.WriteLine(what);
-            }
+                for ( var i in what )
+                {
+                st.WriteLine(i);
+            }}
         }
 
         public static void Clear()

@@ -18,13 +18,19 @@ namespace Mario
         {
             if (_player.IsCollisedLeft(_mustUpdate[0]) == false)
             {
-                _player.Move();
+
+                _player.CanMoveLeft = false;
+
+                return;
             }
+
+            _player.CanMoveLeft = true;
         }
 
         private void _gameLoop_Tick(object sender, EventArgs e)
         {
-                _canvas.Invalidate();           
+            _player.Move();
+            _canvas.Invalidate();           
         }
 
         private void KeyDown(object sender, KeyEventArgs e)

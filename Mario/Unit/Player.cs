@@ -27,10 +27,10 @@ namespace Mario
             base(bitmap, life )
         {
             Logger.Clear();
-            movers.Add(Mario.MotionState.MovingLeft, this.MoveLeft);
-            movers.Add(Mario.MotionState.MovingRight, this.MoveRight);
-            movers.Add(Mario.MotionState.JumpLeft, this.JumpLeft);
-            movers.Add(Mario.MotionState.Jump, this.Jump);
+            movers.Add(Mario.MotionState.MovingLeft, this.FireMoveLeftEvent);
+            movers.Add(Mario.MotionState.MovingRight, this.FireMoveRightEvent);
+            //movers.Add(Mario.MotionState.JumpLeft, this.JumpLeft);
+            //movers.Add(Mario.MotionState.Jump, this.Jump);
         }
 
         public Player(string bitmap, int life, System.Drawing.Point p)

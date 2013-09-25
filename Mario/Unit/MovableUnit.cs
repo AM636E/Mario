@@ -55,7 +55,7 @@ namespace Mario
             
             this.X -= STEP;
         }
-        /**/
+        /*-------------------------------------------*/
 
         public override void Dead()
         {

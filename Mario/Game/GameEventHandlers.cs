@@ -11,7 +11,7 @@ namespace Mario
     {
         private void _player_MovedRight(object sender, EventArgs e)
         {
-            if (_player.IsCollisedLeft(_mustUpdate[0]) == false)
+            if (_player.IsCollisedRight(_mustUpdate[0]) == false && _player.X < _canvasWidth)
             {
                 _player.MoveRight();
                 return;
@@ -20,9 +20,11 @@ namespace Mario
 
         private void _player_MovedLeft(object sender, EventArgs e)
         {
-            
-
-          //  _player.CanMoveLeft = true;
+            if (_player.IsCollisedRight(_mustUpdate[0]) == false && _player.X >= 0)
+            {
+                _player.MoveLeft();
+                return;
+            }
         }
 
         private void _gameLoop_Tick(object sender, EventArgs e)

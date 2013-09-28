@@ -88,7 +88,7 @@ namespace Mario
             return false;
         }
 
-        public bool IsCollisedLeft(Sprite s)
+        public bool IsCollisedRight(Sprite s)
         {
             if (this.Rectangle.IntersectsWith(s.Rectangle) && this.X < s.X)
             {
@@ -98,7 +98,7 @@ namespace Mario
             return false;
         }
 
-        public bool IsCollisedRight(Sprite s)
+        public bool IsCollisedLeft(Sprite s)
         {
             if (this.Rectangle.IntersectsWith(s.Rectangle) && this.X > s.X)
             {
@@ -110,7 +110,7 @@ namespace Mario
 
         public CollisionType Collision(Sprite s)
         {
-            if (IsCollisedLeft(s))
+            if (IsCollisedRight(s))
             {
                 return CollisionType.LEFT;
             }

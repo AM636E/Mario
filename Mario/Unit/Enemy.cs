@@ -15,6 +15,8 @@ namespace Mario
             base(bitmapPath)
         {
             movers.Add(Mario.MotionState.NotMoving, delegate() { });
+            movers.Add(Mario.MotionState.MovingLeft, this.MoveLeft);
+            movers.Add(Mario.MotionState.MovingRight, this.MoveRight);
         }
 
         public Enemy(string bitmapPath, int life)

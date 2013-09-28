@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Mario.BitMapSprite" Collapsed="true">
-    <Position X="1.75" Y="1.75" Width="1.5" />
+    <Position X="3.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAIAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Sprite\BitMapSprite.cs</FileName>
@@ -22,7 +22,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Mario.MovableUnit" Collapsed="true">
-    <Position X="4.75" Y="4.75" Width="1.5" />
+    <Position X="5.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAAIAAAAAAAAABIAIEAEAAAAEIQAAACAAAAAg=</HashCode>
       <FileName>Unit\MovableUnit.cs</FileName>
@@ -30,7 +30,7 @@
     <Lollipop Orientation="Right" Position="0.128" />
   </Class>
   <Class Name="Mario.Player" Collapsed="true">
-    <Position X="6" Y="6.5" Width="1.5" />
+    <Position X="6.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAgACAAAAAAAAoAAAAAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>Unit\Player.cs</FileName>
@@ -52,14 +52,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Mario.Sprite" Collapsed="true">
-    <Position X="1.75" Y="0.5" Width="1.5" />
+    <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAABIACAgQgQAEBIEAQAAApAAAAAAAEBAABYAA=</HashCode>
       <FileName>Sprite\Sprite.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Mario.Unit" Collapsed="true">
-    <Position X="3.25" Y="3" Width="1.5" />
+    <Position X="3.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACAABAAA=</HashCode>
       <FileName>Unit\Unit.cs</FileName>
@@ -98,6 +98,13 @@
       <FileName>Logger.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Mario.Enemy" Collapsed="true">
+    <Position X="4.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Unit\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="Mario.IBoxer" Collapsed="true">
     <Position X="8.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
@@ -113,7 +120,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="Mario.IPlayer" Collapsed="true">
-    <Position X="8.75" Y="5.5" Width="1.5" />
+    <Position X="11" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interface\IPlayer.cs</FileName>
@@ -126,18 +133,18 @@
       <FileName>Interface\IUnitContainer.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="Mario.CollisionType" Collapsed="true">
-    <Position X="8.75" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgAAARAAAAAAAAIAAAAgAAAAAAAAAAA=</HashCode>
-      <FileName>Sprite\Sprite.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
   <Enum Name="Mario.MotionState" Collapsed="true">
     <Position X="8.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAABAQAAgAAAAAAAAAAAAAAAAEAAQAAAAAAAAAAQAA=</HashCode>
       <FileName>Unit\Player.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Mario.CollisionType" Collapsed="true">
+    <Position X="8.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAARAAAAAAAAIAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Sprite\Sprite.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

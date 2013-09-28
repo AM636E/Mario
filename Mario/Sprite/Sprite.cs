@@ -6,6 +6,15 @@ using System.Drawing;
 
 namespace Mario
 {
+    public enum CollisionType 
+    {
+        NONE,
+        LEFT,
+        RIGHT,
+        UP,
+        BOTTOM,
+    }
+
     public  abstract class Sprite
     {
         public event EventHandler NeedUpdateTrue;
@@ -97,6 +106,30 @@ namespace Mario
             }
 
             return false;
+        }
+
+        public CollisionType Collision(Sprite s)
+        {
+            if (IsCollisedLeft(s))
+            {
+                return CollisionType.LEFT;
+            }
+            if (IsCollisedRight(s))
+            {
+                return CollisionType.RIGHT;
+            }
+
+            if (IsCollisedUp(s))
+            {
+                return CollisionType.UP;
+            }
+
+            if (IsCollisedBottom(s))
+            {
+                return CollisionType.BOTTOM;
+            }
+
+            return CollisionType.NONE;
         }
     }
 }

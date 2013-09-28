@@ -24,7 +24,7 @@
   <Class Name="Mario.MovableUnit" Collapsed="true">
     <Position X="4.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAAIAEAAAAAAADIAIEAEAAAAEIwAAACAAAEAg=</HashCode>
+      <HashCode>IAAAAAAAAIAAAAAAAAABIAIEAEAAAAEIQAAACAAAAAg=</HashCode>
       <FileName>Unit\MovableUnit.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Right" Position="0.128" />
@@ -54,7 +54,7 @@
   <Class Name="Mario.Sprite" Collapsed="true">
     <Position X="1.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAABAACAgQgQAEBIEAQAAApAAAAAAAEBAABYAA=</HashCode>
+      <HashCode>AAAAAgAABIACAgQgQAEBIEAQAAApAAAAAAAEBAABYAA=</HashCode>
       <FileName>Sprite\Sprite.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -99,7 +99,7 @@
     </TypeIdentifier>
   </Class>
   <Interface Name="Mario.IBoxer" Collapsed="true">
-    <Position X="4.5" Y="0.5" Width="1.5" />
+    <Position X="8.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interface\IBoxer.cs</FileName>
@@ -113,11 +113,32 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="Mario.IPlayer" Collapsed="true">
-    <Position X="4.5" Y="1.75" Width="1.5" />
+    <Position X="8.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interface\IPlayer.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="Mario.Interface.IUnitContainer" Collapsed="true">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\IUnitContainer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Mario.CollisionType" Collapsed="true">
+    <Position X="8.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAARAAAAAAAAIAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Sprite\Sprite.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Mario.MotionState" Collapsed="true">
+    <Position X="8.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAABAQAAgAAAAAAAAAAAAAAAAEAAQAAAAAAAAAAQAA=</HashCode>
+      <FileName>Unit\Player.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

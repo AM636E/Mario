@@ -20,7 +20,7 @@ namespace Mario
 
         private void _player_MovedLeft(object sender, EventArgs e)
         {
-            if (_player.IsCollisedRight(_mustUpdate[0]) == false && _player.X >= 0)
+            if (_player.IsCollisedLeft(_mustUpdate[0]) == false && _player.X >= 0)
             {
                 _player.MoveLeft();
                 return;
@@ -29,7 +29,6 @@ namespace Mario
 
         private void _gameLoop_Tick(object sender, EventArgs e)
         {
-          //  Logger.Log(_player.MotionState.ToString());
             _player.Move();
             _canvas.Invalidate();           
         }

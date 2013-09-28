@@ -13,6 +13,7 @@ namespace Mario
             }
             if (e.KeyData == Keys.Right)
             {
+               // MessageBox.Show("Right");
                 _player.MotionState = MotionState.MovingRight;
             }
       /*      if (e.KeyData == Keys.Up)

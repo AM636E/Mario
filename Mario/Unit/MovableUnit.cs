@@ -61,12 +61,11 @@ namespace Mario
 
         public void MoveRight()
         {
-            this.X -= STEP;
+            this.X += STEP;
         }
 
         public override void Dead()
-        {
-        }
+        { }
 
         public void Move()
         {

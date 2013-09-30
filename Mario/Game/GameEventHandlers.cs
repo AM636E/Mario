@@ -42,5 +42,12 @@ namespace Mario
         {
             MessageBox.Show(e.KeyData.ToString());
         }
+
+        private void OnUnitNeedUpdate(object sender, EventArgs e)
+        {
+            Unit u = sender as Unit;
+            _mustUpdate.Add(u);
+            u.NeedUpdate = false;
+        }
     }
 }

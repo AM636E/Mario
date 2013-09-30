@@ -14,18 +14,12 @@ namespace Mario
         Game _game;
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();            
 
-            
-
-            _p = new Player(@"D:\GitHub\GDI+\GDI+\bin\Debug\images.jpg", 100);
+            _p = new Player(@"Images/Mario.jpg", 100);
         }
 
         Player _p;
-
-        private void _p_MovedLeft(Object sender, EventArgs args)
-        {
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {

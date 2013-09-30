@@ -17,15 +17,15 @@ namespace Mario
 
     public  abstract class Sprite
     {
-        public event EventHandler NeedUpdateTrue;
+        public event EventHandler OnNeedUpdate;
 
         protected Point position;
         protected int width;
         protected int height;
 
         public Point Position { get { return position; } }
-        public int X { get { return position.X; } set { position.X = value; } }
-        public int Y { get { return position.Y; } set { position.Y = value; } }
+        public int X { get { return position.X; } set { position.X = value; NeedUpdate = true; } }
+        public int Y { get { return position.Y; } set { position.Y = value; NeedUpdate = true; } }
         public int Width { get { return width; } }
         public int Height { get { return height; } }
         public int UpRightX { get { return X + width; } }
@@ -44,9 +44,9 @@ namespace Mario
             set
             {
                 isNeedUpdate = value;
-                if (isNeedUpdate == true && NeedUpdateTrue != null)
+                if (value == true && OnNeedUpdate != null)
                 {
-                    NeedUpdateTrue(this, EventArgs.Empty);
+                    OnNeedUpdate(this, EventArgs.Empty);
                 }
             }
         }
@@ -54,7 +54,7 @@ namespace Mario
         public Sprite()
         {
             position = new Point();
-            isNeedUpdate = false;
+            isNeedUpdate = true;
         }
 
         public Sprite(Point position, int width, int height):

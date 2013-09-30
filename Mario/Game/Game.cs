@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,8 @@ namespace Mario
 
         private Timer _gameLoop;
 
-        Dictionary<Point, Box> _prizes;
+        List<Prize> _prizes;
+        List<Enemy> _enemyes;
 
         List<Unit> _mustUpdate;
 
@@ -46,16 +48,20 @@ namespace Mario
             Logger.Clear();
 
             _mustUpdate = new List<Unit>();
-            _prizes = new Dictionary<Point, Box>();
+            _prizes = new List<Prize>();
+            _enemyes = new List<Enemy>();
 
             Point p = new Point(500, 00);
 
-            _prizes.Add(p, new Box(@"D:\GitHub\HTML_CSS_JAVASCRIPT\task3\memory_puzzle\images\2.jpg", 100, p));
+            _prizes.Add(new Box(@"D:\GitHub\HTML_CSS_JAVASCRIPT\task3\memory_puzzle\images\2.jpg", 100, p));
 
-            _mustUpdate.Add(_prizes[p]);
+            _mustUpdate.Add(_prizes[0]);
 
             _canvas.KeyDown += this.OnKeyDown;
             _canvas.KeyUp += this.OnKeyUp;
+
+            AddHandlers(_prizes, this.OnUnitNeedUpdate);
+            AddHandlers(_enemyes, this.OnUnitNeedUpdate);
         }
 
         public Game(Form canvas, int width, int height)
@@ -87,16 +93,11 @@ namespace Mario
             _graphics = _canvas.CreateGraphics();
         }
 
-        private void OnUnitNeedUpdate(object sender, EventArgs e)
+        private void AddHandlers(IList items, EventHandler handler)
         {
-            _mustUpdate.Add(sender as Unit);
-        }
-
-        private void AddHandlers(Dictionary<Point, Box> items)
-        {
-            foreach (Unit u in items.Values)
+            foreach (Unit u in items)
             {
-                u.NeedUpdateTrue += OnUnitNeedUpdate;
+                u.OnNeedUpdate += handler;
             }
         }
 

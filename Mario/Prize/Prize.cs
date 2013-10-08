@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Mario.Interface;
 
 namespace Mario
 {
-    public class Prize: Unit
+    public class Prize: Unit, ICollisable
     {
         protected int cost;//score that prize add to player score
 
@@ -31,8 +32,14 @@ namespace Mario
             : base(bitmap, p)
         { }
 
+        public void ColliseUp(Player p)
+        {
+            Dead();
+        }
+
         public override void Dead()
         {
+            
         }
     }
 }

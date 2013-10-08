@@ -19,7 +19,7 @@ namespace Mario
 
     class Player: MovableUnit, IPlayer
     {
-        public event EventHandler OnDead;
+        public event EventHandler Dead;
 
         private const int _POWER = 20;
 
@@ -41,29 +41,20 @@ namespace Mario
             :this( bitmap, life, new System.Drawing.Point(x, y ) )
         { }
 
-        public CollisionType CheckCollision(IList units)
+        private CollisionType CheckCollision(IList units)
         {
             foreach (Unit u in units)
             {
-                if (this.IsCollisedLeft(u))
+                if (this.IsCollisedLeft(u) || this.X < 0)
                 {
-                    if (OnDead != null)
-                    {
-                        OnDead(this, EventArgs.Empty);
-                    }
                     return CollisionType.LEFT;
                 }
                 if (this.IsCollisedRight(u))
                 {
-                    if (OnDead != null)
-                    {
-                        OnDead(this, EventArgs.Empty);
-                    }
                     return CollisionType.RIGHT;
                 }
                 if (this.IsCollisedUp(u))
                 {
-                    u.Dead();
                     return CollisionType.UP;
                 }
                 if (this.IsCollisedBottom(u))
@@ -74,10 +65,24 @@ namespace Mario
             return CollisionType.NONE;
         }
 
+        public void CollisedWithPrizes(Prize[] prizes)
+        {
+            switch(CheckCollision(prizes))
+            {
+                case CollisionType.LEFT:
+                    { break; }
+
+            }
+        }
+
+        public void CollisedWithEnemies(Enemy[] enemies)
+        {
+            switch
+        }
+
         public override void Dead()
         {
-            MessageBox.Show("test");
-            OnDead(this, EventArgs.Empty);
+            Dead(this, EventArgs.Empty);
         }       
 
         public void Kick(Unit s)

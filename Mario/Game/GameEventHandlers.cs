@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,26 +10,30 @@ namespace Mario
 {
     partial class Game
     {
+        public delegate void CollisionAction();
+
         private void _player_MovedRight(object sender, EventArgs e)
         {
-            if (_player.IsCollisedRight(_mustUpdate[0]) == false && _player.X < _canvasWidth)
+            if(_collisionPrizes == CollisionType.NONE && _collisionEnemies == CollisionType.NONE)
             {
                 _player.MoveRight();
-                return;
             }
-        }
+       }
 
         private void _player_MovedLeft(object sender, EventArgs e)
         {
-            if (_player.IsCollisedLeft(_mustUpdate[0]) == false && _player.X >= 0)
+            if (_collisionPrizes == CollisionType.NONE && _collisionEnemies == CollisionType.NONE)
             {
                 _player.MoveLeft();
-                return;
             }
         }
 
+       
+
         private void _gameLoop_Tick(object sender, EventArgs e)
         {
+            _player.CheckCollision(_enemyes);
+            _player.CheckCollision(_prizes);
             _player.Move();
             _canvas.Invalidate();           
         }

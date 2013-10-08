@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Mario
 {
-    class MovableUnit : Unit, IMovable
+    public abstract class MovableUnit : Unit, IMovable
     {
         public const int STEP = 20;//number of pixels unit that unit step have
 

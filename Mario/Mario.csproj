@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game\GameEventHandlers.cs" />
+    <Compile Include="Game\GameFields.cs" />
     <Compile Include="Game\GameUserInput.cs" />
     <Compile Include="Interface\IUnitContainer.cs" />
     <Compile Include="Sprite\BitMapSprite.cs" />

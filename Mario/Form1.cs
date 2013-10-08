@@ -12,14 +12,14 @@ namespace Mario
     public partial class Form1 : Form
     {
         Game _game;
+        Player _p;
+        
         public Form1()
         {
-            InitializeComponent();            
+            InitializeComponent();
 
             _p = new Player(@"Images/Mario.jpg", 100);
         }
-
-        Player _p;
 
         private void Form1_Load(object sender, EventArgs e)
         {

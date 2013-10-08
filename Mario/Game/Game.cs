@@ -10,20 +10,6 @@ namespace Mario
 {
     partial class Game
     {
-        private Player _player;
-
-        private Timer _gameLoop;
-
-        List<Prize> _prizes;
-        List<Enemy> _enemyes;
-
-        List<Unit> _mustUpdate;
-
-        private Form _canvas;
-        private Graphics _graphics;
-        private int _canvasWidth;
-        private int _canvasHeight;
-
         public Graphics Graphics { get { return _graphics; } set { _graphics = value; } }
         public int GameLoopInterval
         {
@@ -53,15 +39,14 @@ namespace Mario
 
             Point p = new Point(500, 00);
 
-            _prizes.Add(new Box(@"D:\GitHub\HTML_CSS_JAVASCRIPT\task3\memory_puzzle\images\2.jpg", 100, p));
+            _prizes.Add(new Box(@"Images\prize.png", 100, p));
 
             _mustUpdate.Add(_prizes[0]);
 
             _canvas.KeyDown += this.OnKeyDown;
             _canvas.KeyUp += this.OnKeyUp;
-
             AddHandlers(_prizes, this.OnUnitNeedUpdate);
-            AddHandlers(_enemyes, this.OnUnitNeedUpdate);
+            AddHandlers(_enemyes, this.OnUnitNeedUpdate);            
         }
 
         public Game(Form canvas, int width, int height)
@@ -77,6 +62,7 @@ namespace Mario
             : this(canvas, width, height)
         {
             _player = player;
+            _player.OnDead += (sender, e) => { MessageBox.Show("Aaa!"); };
         }        
 
         public void Start()
@@ -99,9 +85,7 @@ namespace Mario
             {
                 u.OnNeedUpdate += handler;
             }
-        }
-
-        public List<Unit> NeedUpdate { get { return _mustUpdate; } }
+        }       
 
         public void UpdateView(Graphics g)
         {
@@ -111,6 +95,8 @@ namespace Mario
             {
                 toUpdate.Draw(g);
             }
+
+            _mustUpdate.Clear();
         }
 
         public void UpdateView()

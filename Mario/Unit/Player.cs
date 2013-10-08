@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Mario
 {
-    enum MotionState
+    public enum MotionState
     {
         MovingLeft,
         MovingRight,
@@ -17,11 +17,13 @@ namespace Mario
         NotMoving,
     }
 
-    class Player: MovableUnit, IPlayer
+    public class Player: MovableUnit, IPlayer
     {
         public event EventHandler OnDead;
 
         private const int _POWER = 20;
+
+        public int Score { get; set; }
 
         public Player(string bitmap, int life):
             base(bitmap, life )

@@ -35,11 +35,20 @@ namespace Mario
         public void ColliseUp(Player p)
         {
             Dead();
+            p.Score += this.Cost;
         }
+
+        public void ColliseBottom(Player p)
+        {
+            ColliseUp(p);
+        }
+
+        public void ColliseRight(Player p) { }
+        public void ColliseLeft(Player p) { }
 
         public override void Dead()
         {
-            
+            Logger.Log(this.ToString(), " dead");
         }
     }
 }

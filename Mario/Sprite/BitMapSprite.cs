@@ -39,6 +39,20 @@ namespace Mario
             this.bitmap = bitmap;           
         }
 
+        public BitMapSprite(string path, Point position, int width, int height)
+            :this(position,path)
+        {
+            this.width = width;
+            this.height = height;
+        }
+
+        public void FillRectangle(Graphics g)
+        {
+            TextureBrush tb = new TextureBrush(this.bitmap);
+
+            g.FillRectangle(tb, this.Rectangle);
+        }
+
         public override void Draw(Graphics g)
         {
             g.DrawImage(bitmap, position);

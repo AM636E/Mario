@@ -6,7 +6,7 @@ using Mario.Interface;
 
 namespace Mario
 {
-    public class Prize: Unit, ICollisable
+    public class Prize: Unit
     {
         protected int cost;//score that prize add to player score
 
@@ -32,19 +32,19 @@ namespace Mario
             : base(bitmap, p)
         { }
 
-        public void ColliseUp(Player p)
+        public override void ColliseUp(Player p)
         {
             Dead();
             p.Score += this.Cost;
         }
 
-        public void ColliseBottom(Player p)
+        public override void ColliseBottom(Player p)
         {
             ColliseUp(p);
         }
 
-        public void ColliseRight(Player p) { }
-        public void ColliseLeft(Player p) { }
+        public override void ColliseRight(Player p) { }
+        public override void ColliseLeft(Player p) { }
 
         public override void Dead()
         {

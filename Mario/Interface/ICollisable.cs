@@ -5,15 +5,16 @@ using System.Text;
 
 namespace Mario.Interface
 {
+    /*
+     * Provides actions that collisable sprite must do
+     * when collised with player
+     */
+
     public interface ICollisable
     {
         void ColliseRight(Player p);
         void ColliseLeft(Player p);
         void ColliseUp(Player p);
-        void ColliseBottom(Player p);
-        bool IsCollisedLeft(Unit u );
-        bool IsCollisedRihgt(Unit u );
-        bool IsCollisedUp(Unit u );
-        bool IsCollisedBottom(Unit u);    
+        void ColliseBottom(Player p);   
     }
 }

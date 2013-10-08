@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Mario.Interface;
 namespace Mario
 {
-    class Enemy: MovableUnit
+    class Enemy: MovableUnit, ICollisable
     {
         public Enemy()
             : base()
@@ -27,5 +27,22 @@ namespace Mario
             : base(bitmapPath, life)
         { this.position = p; }
 
+        void ColliseRight(Player p)
+        {
+            p.Dead();
+        }
+        void ColliseLeft(Player p)
+        {
+            p.Dead();
+        }
+        void ColliseUp(Player p)
+        {
+            Dead();
+        }
+
+        void ColliseBottom(Player p)
+        {
+            Dead();
+        }
     }
 }

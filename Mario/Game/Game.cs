@@ -56,9 +56,9 @@ namespace Mario
             _canvas.Height = _canvasHeight = height;
             CreateGraphics();
 
-            _player = new Player(@"Images/Mario.jpg", 100);
+            _player = new Player(@"Images/Mario.jpg", 100, new Point(0, height - 200));
 
-            _ground = new BitMapSprite(@"Image/ground.png", new Point(0, height - 100), width, 100);
+            _ground = new BitMapSprite(@"Images/ground.png", new Point(0, height - 100), width, 100);
         }
 
         public Game(Form canvas, Player player,  int width, int height)
@@ -93,7 +93,7 @@ namespace Mario
         public void UpdateView(Graphics g)
         {
             _player.Draw(g);
-
+            _ground.FillRectangle(g);
             foreach (Unit toUpdate in _mustUpdate)
             {
                 toUpdate.Draw(g);

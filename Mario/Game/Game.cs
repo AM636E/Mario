@@ -56,6 +56,7 @@ namespace Mario
             _canvas.Height = _canvasHeight = height;
             CreateGraphics();
 
+            _ground = new BitMapSprite(@"Image/ground.png", new Point(0, height - 100), width, 100);
         }
 
         public Game(Form canvas, Player player,  int width, int height)

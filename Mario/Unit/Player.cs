@@ -20,6 +20,7 @@ namespace Mario
     public class Player : MovableUnit, IPlayer
     {
         public event EventHandler OnDead;
+        public event EventHandler Jumping;
 
         private const int _POWER = 20;
 
@@ -31,6 +32,7 @@ namespace Mario
             Logger.Clear();
             movers.Add(Mario.MotionState.MovingLeft, this.FireMoveLeftEvent);
             movers.Add(Mario.MotionState.MovingRight, this.FireMoveRightEvent);
+            movers.Add(Mario.MotionState.Jump, this.Fi)
         }
 
         public Player(string bitmap, int life, System.Drawing.Point p)
@@ -42,6 +44,14 @@ namespace Mario
         public Player(String bitmap, int life, int x, int y)
             : this(bitmap, life, new System.Drawing.Point(x, y))
         { }
+
+        public void FireJumpEvent()
+        {
+            if(Jumping != null)
+            {
+            
+            }
+        }
 
         public CollisionType CheckCollision(IList units)
         {

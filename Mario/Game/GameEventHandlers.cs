@@ -22,13 +22,11 @@ namespace Mario
 
         private void _player_MovedLeft(object sender, EventArgs e)
         {
-            if (_collisionPrizes == CollisionType.NONE && _collisionEnemies == CollisionType.NONE)
+            if (_collisionPrizes == CollisionType.NONE && _collisionEnemies == CollisionType.NONE && _player.X >= 0)
             {
                 _player.MoveLeft();
             }
-        }
-
-       
+        }       
 
         private void _gameLoop_Tick(object sender, EventArgs e)
         {

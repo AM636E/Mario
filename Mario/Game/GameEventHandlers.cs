@@ -22,6 +22,7 @@ namespace Mario
 
         private void _player_MovedLeft(object sender, EventArgs e)
         {
+            Logger.Clear();
             if (_collisionPrizes == CollisionType.NONE && _collisionEnemies == CollisionType.NONE && _player.X >= 0)
             {
                 _player.MoveLeft();
@@ -32,6 +33,7 @@ namespace Mario
         {
             _player.CheckCollision(_enemyes);
             _player.CheckCollision(_prizes);
+            Logger.Log(_player.ToString(), " TICK  ", _player.Y.ToString());
             _player.Move();
             _canvas.Invalidate();           
         }

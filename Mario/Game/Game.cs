@@ -37,7 +37,7 @@ namespace Mario
             _prizes = new List<Prize>();
             _enemyes = new List<Enemy>();
 
-            Point p = new Point(500, 00);
+            Point p = new Point(600, 300);
 
             _prizes.Add(new Box(@"Images\prize.png", 100, p));
 
@@ -81,12 +81,14 @@ namespace Mario
 
         void _player_JumpingLeft(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         void _player_Jumping(object sender, EventArgs e)
         {
-           
+        
+            _player.Jump();
+            _player.Draw(_graphics);
         }
         
         public void CreateGraphics()
@@ -111,7 +113,7 @@ namespace Mario
                 toUpdate.Draw(g);
             }
 
-            _mustUpdate.Clear();
+        //    _mustUpdate.Clear();
         }
 
         public void UpdateView()

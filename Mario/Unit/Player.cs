@@ -25,6 +25,7 @@ namespace Mario
 
         private const int _POWER = 20;
         private int _maxJumpHeight;
+        private int _startY;
 
         public int Score { get; set; }
 
@@ -41,6 +42,8 @@ namespace Mario
             : this(bitmap, life)
         {
             this.position = p;
+            _maxJumpHeight = this.Y - MaxJumpHeight;
+            _startY = Y;
         }
 
         public Player(String bitmap, int life, int x, int y)
@@ -51,6 +54,7 @@ namespace Mario
         {
             if(Jumping != null)
             {
+                _plusY *= 1;
                 Jumping(this, EventArgs.Empty);
             }
         }
@@ -69,21 +73,22 @@ namespace Mario
             {
                 if (this.IsCollisedLeft(u))
                 {
-                    u.ColliseLeft(this);
+                    u.ColliseLeft(this); MessageBox.Show("a");
                     return CollisionType.LEFT;
                 }
                 if (this.IsCollisedRight(u))
                 {
+                    MessageBox.Show("a");
                     u.ColliseRight(this); return CollisionType.RIGHT;
                 }
                 if (this.IsCollisedUp(u))
                 {
-                    u.ColliseUp(this);
+                    u.ColliseUp(this); MessageBox.Show("a");
                     return CollisionType.UP;
                 }
                 if (this.IsCollisedBottom(u))
                 {
-                    u.ColliseBottom(this);
+                    u.ColliseBottom(this); MessageBox.Show("a");
                     return CollisionType.BOTTOM;
                 }
             }
@@ -101,11 +106,28 @@ namespace Mario
             s.Life -= _POWER;
         }
 
-        public const int MaxJumpHeight = 100;
-
+        public const int MaxJumpHeight = 200;
+        private int _plusY = -100;
+        bool isUp = true;
         public void Jump()
         {
-            if()
+            this.Y += _plusY;
+            
+            if(this.Y > _maxJumpHeight)
+            {
+                _plusY *= -1;
+            }
+            
+            if(this.Y == _startY )
+            {
+                _motionState = Mario.MotionState.NotMoving;
+            }
+        }
+
+        public override void Draw(System.Drawing.Graphics g)
+        {
+            base.Draw(g);
+
         }
 
         public void JumpLeft()

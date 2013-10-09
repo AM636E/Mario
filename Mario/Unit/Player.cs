@@ -49,7 +49,7 @@ namespace Mario
         {
             if(Jumping != null)
             {
-            
+                Jumping(this, EventArgs.Empty);
             }
         }
 

@@ -75,6 +75,18 @@ namespace Mario
 
             _player.MovedLeft += new EventHandler(_player_MovedLeft);
             _player.MovedRight += new EventHandler(_player_MovedRight);
+            _player.Jumping += _player_Jumping;
+            _player.JumpingLeft += _player_JumpingLeft;
+        }
+
+        void _player_JumpingLeft(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void _player_Jumping(object sender, EventArgs e)
+        {
+           
         }
         
         public void CreateGraphics()

@@ -21,8 +21,10 @@ namespace Mario
     {
         public event EventHandler OnDead;
         public event EventHandler Jumping;
+        public event EventHandler JumpingLeft;
 
         private const int _POWER = 20;
+        private int _maxJumpHeight;
 
         public int Score { get; set; }
 
@@ -32,7 +34,7 @@ namespace Mario
             Logger.Clear();
             movers.Add(Mario.MotionState.MovingLeft, this.FireMoveLeftEvent);
             movers.Add(Mario.MotionState.MovingRight, this.FireMoveRightEvent);
-            movers.Add(Mario.MotionState.Jump, this.Fi)
+            movers.Add(Mario.MotionState.Jump, this.FireJumpEvent);
         }
 
         public Player(string bitmap, int life, System.Drawing.Point p)
@@ -55,7 +57,10 @@ namespace Mario
 
         public void FireJumpLeftEvent()
         {
-
+            if(JumpingLeft != null)
+            {
+                JumpingLeft(this, EventArgs.Empty);
+            }
         }
 
         public CollisionType CheckCollision(IList units)
@@ -96,9 +101,11 @@ namespace Mario
             s.Life -= _POWER;
         }
 
+        public const int MaxJumpHeight = 100;
+
         public void Jump()
         {
-            Logger.Log("Jump");
+            if()
         }
 
         public void JumpLeft()

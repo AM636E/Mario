@@ -53,6 +53,11 @@ namespace Mario
             }
         }
 
+        public void FireJumpLeftEvent()
+        {
+
+        }
+
         public CollisionType CheckCollision(IList units)
         {
             foreach (Unit u in units)

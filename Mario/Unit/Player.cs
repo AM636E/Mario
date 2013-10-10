@@ -135,7 +135,6 @@ namespace Mario
         public override void Draw(System.Drawing.Graphics g)
         {
             base.Draw(g);
-
         }
 
         public void JumpLeft()

@@ -5,16 +5,16 @@ using System.Text;
 using System.IO;
 namespace Mario
 {
-    static class Logger
+    static class console
     {
         private const string _path_ = "./log.txt";
 
-        static Logger()
+        static console()
         {
 
         }
 
-        public static void Log(params string[] what)
+        public static void log(params string[] what)
         {
             using (StreamWriter st = new StreamWriter(_path_, true))
             {

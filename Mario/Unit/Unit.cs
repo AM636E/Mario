@@ -7,7 +7,6 @@ namespace Mario
 {
     public abstract class Unit: BitMapSprite, Mario.Interface.ICollisable
     {
-
         protected int life;
 
         public int Life { get { return life; } set { life = value; } }
@@ -43,7 +42,7 @@ namespace Mario
 
         public abstract void Dead();
 
-        public virtual void ColliseLeft(Player p) { Dead(); }
+        public virtual void ColliseLeft(Player p) { Dead();  }
         public virtual void ColliseRight(Player p) { Dead(); }
         public virtual void ColliseUp(Player p) { Dead(); }
         public virtual void ColliseBottom(Player p) { Dead(); }

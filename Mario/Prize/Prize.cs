@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Mario.Interface;
+using System.Windows.Forms;
 
 namespace Mario
 {
@@ -35,12 +36,12 @@ namespace Mario
         public override void ColliseUp(Player p)
         {
             Dead();
-            p.Score += this.Cost;
+            p.Score += this.Cost;MessageBox.Show("Bottom");
         }
 
         public override void ColliseBottom(Player p)
         {
-            ColliseUp(p);
+            MessageBox.Show("Bottom");
         }
 
         public override void ColliseRight(Player p) { }
@@ -48,7 +49,7 @@ namespace Mario
 
         public override void Dead()
         {
-            Logger.Log(this.ToString(), " dead");
+            console.log(this.ToString(), " dead");
         }
     }
 }

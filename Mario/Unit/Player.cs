@@ -32,7 +32,7 @@ namespace Mario
         public Player(string bitmap, int life) :
             base(bitmap, life)
         {
-            Logger.Clear();
+            console.Clear();
             movers.Add(Mario.MotionState.MovingLeft, this.FireMoveLeftEvent);
             movers.Add(Mario.MotionState.MovingRight, this.FireMoveRightEvent);
             movers.Add(Mario.MotionState.Jump, this.FireJumpEvent);
@@ -73,22 +73,29 @@ namespace Mario
             {
                 if (this.IsCollisedLeft(u))
                 {
-                    u.ColliseLeft(this); MessageBox.Show("a");
+                    console.log("Collision Type left ");
+           
+                    u.ColliseLeft(this);
                     return CollisionType.LEFT;
                 }
                 if (this.IsCollisedRight(u))
                 {
-                    MessageBox.Show("a");
+                    console.log("Collision Type PRizes Right");
+
                     u.ColliseRight(this); return CollisionType.RIGHT;
                 }
                 if (this.IsCollisedUp(u))
                 {
-                    u.ColliseUp(this); MessageBox.Show("a");
+                    console.log("Collision Type PRizes Up");
+     
+                    u.ColliseUp(this);
                     return CollisionType.UP;
                 }
                 if (this.IsCollisedBottom(u))
                 {
-                    u.ColliseBottom(this); MessageBox.Show("a");
+                    console.log("Collision Type PRizes Bottom");
+       
+                    u.ColliseBottom(this);
                     return CollisionType.BOTTOM;
                 }
             }
@@ -108,9 +115,10 @@ namespace Mario
 
         public const int MaxJumpHeight = 200;
         private int _plusY = -100;
-        bool isUp = true;
+
         public void Jump()
         {
+            console.Clear();
             this.Y += _plusY;
             
             if(this.Y > _maxJumpHeight)
@@ -132,7 +140,7 @@ namespace Mario
 
         public void JumpLeft()
         {
-            Logger.Log("JumpLeft");
+            console.log("JumpLeft");
         }
 
         public override void ColliseLeft(Player p) { }

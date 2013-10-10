@@ -84,12 +84,7 @@ namespace Mario
             
         }
 
-        void _player_Jumping(object sender, EventArgs e)
-        {
-        
-            _player.Jump();
-            _player.Draw(_graphics);
-        }
+  
         
         public void CreateGraphics()
         {

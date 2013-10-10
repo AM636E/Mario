@@ -49,7 +49,6 @@ namespace Mario
         void _player_Jumping(object sender, EventArgs e)
         {
             _player.Jump();
-            _player.Draw(_graphics);
         }
 
         private void OnUnitNeedUpdate(object sender, EventArgs e)

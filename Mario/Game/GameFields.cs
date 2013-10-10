@@ -18,6 +18,7 @@ namespace Mario
 
         private CollisionType _collisionPrizes = CollisionType.NONE;
         private CollisionType _collisionEnemies = CollisionType.NONE;
+        
 
         private BitMapSprite _ground;
         

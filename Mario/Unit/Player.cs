@@ -18,15 +18,17 @@ namespace Mario
     }
 
     public class Player : MovableUnit, IPlayer
-    {
-        public event EventHandler OnDead;
-        public event EventHandler Jumping;
-        public event EventHandler JumpingLeft;
-
+    {  
         private const int _POWER = 20;
         private int _maxJumpHeight;
         private int _startY;
+        private bool _isOnGround = false;        
+        
+        public event EventHandler OnDead;
+        public event EventHandler Jumping;
+        public event EventHandler JumpingLeft;       
 
+        public bool OnGround { get { return _isOnGround; } set { _isOnGround = value; } }
         public int Score { get; set; }
 
         public Player(string bitmap, int life) :
@@ -99,6 +101,7 @@ namespace Mario
                     return CollisionType.BOTTOM;
                 }
             }
+
             return CollisionType.NONE;
         }
 

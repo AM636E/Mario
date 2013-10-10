@@ -84,8 +84,6 @@ namespace Mario
             
         }
 
-  
-        
         public void CreateGraphics()
         {
             _graphics = _canvas.CreateGraphics();

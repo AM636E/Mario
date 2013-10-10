@@ -12,6 +12,7 @@ namespace Mario
         LEFT,
         RIGHT,
         UP,
+        GROUND,
         BOTTOM,
     }
 

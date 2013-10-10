@@ -116,6 +116,16 @@ namespace Mario
         public const int MaxJumpHeight = 200;
         private int _plusY = -100;
 
+        public void MoveUp()
+        {
+            this.Y += 100;
+        }
+
+        public void MoveDown()
+        {
+            this.Y -= 100;
+        }
+
         public void Jump()
         {
             console.Clear();

@@ -31,7 +31,7 @@ namespace Mario
             _canvas = canvas;
             CreateGraphics();
             _gameLoop = new Timer();
-            Logger.Clear();
+            console.Clear();
 
             _mustUpdate = new List<Unit>();
             _prizes = new List<Prize>();

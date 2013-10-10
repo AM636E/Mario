@@ -32,8 +32,6 @@ namespace Mario
         {
             _collisionEnemies = _player.CheckCollision(_enemyes);
             _collisionPrizes = _player.CheckCollision(_prizes);
-            console.log("Collision Type PRizes ", _collisionPrizes.ToString());
-            console.log("Collistion Enemies ", _collisionEnemies.ToString());
             _player.Move();
             _canvas.Invalidate();           
         }

@@ -19,6 +19,10 @@ namespace Mario
             {
                 _player.MotionState = MotionState.Jump;
             }
+            if(e.KeyData == Keys.Space)
+            {
+                _player = new Player(@"Images/Mario.jpg", 100, new System.Drawing.Point(0, 500 - 200));
+            }
         }
 
         public void OnKeyUp(Object sender, KeyEventArgs e)

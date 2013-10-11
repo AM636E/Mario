@@ -58,8 +58,6 @@ namespace Mario
 
             _player = new Player(@"Images/Mario.jpg", 100, new Point(0, height - 200));
 
-         //   _jumpers.Add(_player.MoveUp);
-          //  _jumpers.Add(_player.MoveDown);
             _jump = new Jumper(_player.MoveUp);
             _ground = new BitMapSprite(@"Images/ground.png", new Point(0, height - 100), width, 100);
         }
@@ -75,7 +73,7 @@ namespace Mario
         {
             _gameLoop.Tick += new EventHandler(_gameLoop_Tick);
             _gameLoop.Start();
-
+            
             _player.MovedLeft += new EventHandler(_player_MovedLeft);
             _player.MovedRight += new EventHandler(_player_MovedRight);
             _player.Jumping += _player_Jumping;

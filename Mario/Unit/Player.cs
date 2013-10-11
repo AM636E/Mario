@@ -86,7 +86,7 @@ namespace Mario
 
                     u.ColliseRight(this); return CollisionType.RIGHT;
                 }
-                if (this.IsCollisedUp(u))
+                if (this.IsSpriteUp(u))
                 {
                     console.log("Collision Type PRizes Up");
      

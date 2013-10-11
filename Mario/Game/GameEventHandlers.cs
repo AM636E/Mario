@@ -14,7 +14,7 @@ namespace Mario
 
         private void _player_MovedRight(object sender, EventArgs e)
         {
-            if (_collisionPrizes != CollisionType.RIGHT && _collisionEnemies == CollisionType.RIGHT)
+            if (_collisionPrizes != CollisionType.RIGHT && _collisionEnemies != CollisionType.RIGHT)
             {
                 _player.MoveRight();
             }

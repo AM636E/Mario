@@ -121,7 +121,7 @@ namespace Mario
 
         public void MoveUp()
         {
-            this.Y += 100;
+            this.Y -= 100;
         }
 
         public void MoveDown()

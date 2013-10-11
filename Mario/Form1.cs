@@ -22,7 +22,7 @@ namespace Mario
         {
             _game = new Game(this, 1000, 500);
             _game.Start();
-            _game.GameLoopInterval = 100;
+            _game.GameLoopInterval = 1000;
 
             this.KeyDown += _game.OnKeyDown;
         }

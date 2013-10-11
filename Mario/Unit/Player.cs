@@ -73,14 +73,14 @@ namespace Mario
         {
             foreach (Unit u in units)
             {
-                if (this.IsCollisedLeft(u))
+                if (this.IsCollisedOnLeft(u))
                 {
                     console.log("Collision Type left ");
            
                     u.ColliseLeft(this);
                     return CollisionType.LEFT;
                 }
-                if (this.IsCollisedRight(u))
+                if (this.IsCollisedOnRight(u))
                 {
                     console.log("Collision Type PRizes Right");
 
@@ -93,7 +93,7 @@ namespace Mario
                     u.ColliseUp(this);
                     return CollisionType.UP;
                 }
-                if (this.IsCollisedBottom(u))
+                if (this.IsSpriteBottom(u))
                 {
                     console.log("Collision Type PRizes Bottom");
        
@@ -126,7 +126,7 @@ namespace Mario
 
         public void MoveDown()
         {
-            this.Y -= 100;
+            this.Y += 100;
         }
 
         public void Jump()

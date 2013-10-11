@@ -32,7 +32,6 @@ namespace Mario
         {
             _collisionEnemies = _player.CheckCollision(_enemyes);
             _collisionPrizes = _player.CheckCollision(_prizes);
-          //  _player.MotionState = MotionState.Jump;
             _player.Move();
             _canvas.Invalidate();           
         }
@@ -47,17 +46,21 @@ namespace Mario
             MessageBox.Show(e.KeyData.ToString());
         }
 
+        delegate void Jumper();
+        Jumper _jump;
+
         void _player_Jumping(object sender, EventArgs e)
         {
-            if (_player.Y > 300)
+            _jump();
+
+            if(_player.X < 200)
             {
-                console.log("moving up");
-                _player.MoveUp();
+                _jump = _player.MoveDown;
             }
-            else if (_player.IsCollisedBottom(_ground))
+            if(_player.IsSpriteBottom(_ground))
             {
-                console.log("moving down");
-                _player.MoveDown();
+                _jump = _player.MoveUp;
+                _player.MotionState = MotionState.NotMoving;
             }
         }
 

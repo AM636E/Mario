@@ -58,15 +58,18 @@ namespace Mario
 
             _player = new Player(@"Images/Mario.jpg", 100, new Point(0, height - 200));
 
+         //   _jumpers.Add(_player.MoveUp);
+          //  _jumpers.Add(_player.MoveDown);
+            _jump = new Jumper(_player.MoveUp);
             _ground = new BitMapSprite(@"Images/ground.png", new Point(0, height - 100), width, 100);
         }
 
-        public Game(Form canvas, Player player,  int width, int height)
+        public Game(Form canvas, Player player, int width, int height)
             : this(canvas, width, height)
         {
             _player = player;
             _player.OnDead += (sender, e) => { MessageBox.Show("Aaa!"); };
-        }        
+        }
 
         public void Start()
         {

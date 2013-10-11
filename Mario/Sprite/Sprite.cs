@@ -69,7 +69,7 @@ namespace Mario
         public abstract void Draw(Graphics g);
 
 
-        public bool IsCollisedUp(Sprite s)
+        public bool IsSpriteUp(Sprite s)
         {
             if (this.Rectangle.IntersectsWith(s.Rectangle) && this.Y >= s.Y)
             {
@@ -79,7 +79,7 @@ namespace Mario
             return false;
         }
 
-        public bool IsCollisedBottom(Sprite s)
+        public bool IsSpriteBottom(Sprite s)
         {
             if (this.Rectangle.IntersectsWith(s.Rectangle) && this.Y <= s.Y)
             {
@@ -89,7 +89,7 @@ namespace Mario
             return false;
         }
 
-        public bool IsCollisedRight(Sprite s)
+        public bool IsCollisedOnRight(Sprite s)
         {
             if (this.Rectangle.IntersectsWith(s.Rectangle) && this.X < s.X)
             {
@@ -99,7 +99,7 @@ namespace Mario
             return false;
         }
 
-        public bool IsCollisedLeft(Sprite s)
+        public bool IsCollisedOnLeft(Sprite s)
         {
             if (this.Rectangle.IntersectsWith(s.Rectangle) && this.X > s.X)
             {
@@ -111,11 +111,11 @@ namespace Mario
 
         public CollisionType Collision(Sprite s)
         {
-            if (IsCollisedRight(s))
+            if (IsCollisedOnRight(s))
             {
                 return CollisionType.LEFT;
             }
-            if (IsCollisedRight(s))
+            if (IsCollisedOnRight(s))
             {
                 return CollisionType.RIGHT;
             }
@@ -125,7 +125,7 @@ namespace Mario
                 return CollisionType.UP;
             }
 
-            if (IsCollisedBottom(s))
+            if (IsSpriteBottom(s))
             {
                 return CollisionType.BOTTOM;
             }

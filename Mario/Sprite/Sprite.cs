@@ -68,7 +68,6 @@ namespace Mario
 
         public abstract void Draw(Graphics g);
 
-
         public bool IsSpriteUp(Sprite s)
         {
             if (this.Rectangle.IntersectsWith(s.Rectangle) && this.Y >= s.Y)

@@ -73,14 +73,14 @@ namespace Mario
         {
             foreach (Unit u in units)
             {
-                if (this.IsCollisedOnLeft(u))
+                if (this.IsSpriteOnLeft(u))
                 {
                     console.log("Collision Type left ");
            
                     u.ColliseLeft(this);
                     return CollisionType.LEFT;
                 }
-                if (this.IsCollisedOnRight(u))
+                if (this.IsSpriteOnRight(u))
                 {
                     console.log("Collision Type PRizes Right");
 

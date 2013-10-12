@@ -39,9 +39,11 @@ namespace Mario
 
             Point p = new Point(600, 300);
 
-            _prizes.Add(new Box(@"Images\prize.png", 100, p));
+            _prizes.Add(new Box(@"Images/prize.png", 100, p));
+            _enemyes.Add(new Enemy(@"Images/enemy.png", 100, new Point(150, 350)));
 
             _mustUpdate.Add(_prizes[0]);
+            _mustUpdate.Add(_enemyes[0]);
 
             _canvas.KeyDown += this.OnKeyDown;
             _canvas.KeyUp += this.OnKeyUp;
@@ -106,8 +108,6 @@ namespace Mario
             {
                 toUpdate.Draw(g);
             }
-
-        //    _mustUpdate.Clear();
         }
 
         public void UpdateView()

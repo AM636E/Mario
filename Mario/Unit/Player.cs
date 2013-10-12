@@ -75,20 +75,24 @@ namespace Mario
             {
                 if (this.IsSpriteOnLeft(u))
                 {
+                    console.log( "Left ", u.ToString());
                     u.ColliseLeft(this);
                     return CollisionType.LEFT;
                 }
                 if (this.IsSpriteOnRight(u))
                 {
+                    console.log( "Right " ,u.ToString());
                     u.ColliseRight(this); return CollisionType.RIGHT;
                 }
                 if (this.IsSpriteUp(u))
                 {
+                    console.log(u.ToString());
                     u.ColliseUp(this);
                     return CollisionType.UP;
                 }
                 if (this.IsSpriteBottom(u))
                 {
+                    console.log(u.ToString());
                     u.ColliseBottom(this);
                     return CollisionType.BOTTOM;
                 }
@@ -99,9 +103,11 @@ namespace Mario
 
         public override void Dead()
         {
-            Deading(this, EventArgs.Empty);
+            if (Deading != null)
+            {
+                Deading(this, EventArgs.Empty);
+            }
         }
-
         public void Kick(Unit s)
         {
             s.Life -= _POWER;

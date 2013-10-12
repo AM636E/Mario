@@ -66,7 +66,7 @@ namespace Mario
             : this(canvas, width, height)
         {
             _player = player;
-            _player.OnDead += (sender, e) => { MessageBox.Show("Aaa!"); };
+            _player.Deading += (sender, e) => { MessageBox.Show("Aaa!"); };
         }
 
         public void Start()

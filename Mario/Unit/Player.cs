@@ -18,15 +18,15 @@ namespace Mario
     }
 
     public class Player : MovableUnit, IPlayer
-    {  
+    {
         private const int _POWER = 20;
         private int _maxJumpHeight;
         private int _startY;
-        private bool _isOnGround = false;        
-        
-        public event EventHandler OnDead;
+        private bool _isOnGround = false;
+
+        public event EventHandler Deading;
         public event EventHandler Jumping;
-        public event EventHandler JumpingLeft;       
+        public event EventHandler JumpingLeft;
 
         public bool OnGround { get { return _isOnGround; } set { _isOnGround = value; } }
         public int Score { get; set; }
@@ -54,7 +54,7 @@ namespace Mario
 
         public void FireJumpEvent()
         {
-            if(Jumping != null)
+            if (Jumping != null)
             {
                 _plusY *= 1;
                 Jumping(this, EventArgs.Empty);
@@ -63,7 +63,7 @@ namespace Mario
 
         public void FireJumpLeftEvent()
         {
-            if(JumpingLeft != null)
+            if (JumpingLeft != null)
             {
                 JumpingLeft(this, EventArgs.Empty);
             }
@@ -75,28 +75,20 @@ namespace Mario
             {
                 if (this.IsSpriteOnLeft(u))
                 {
-                    console.log("Collision Type left ");
-           
                     u.ColliseLeft(this);
                     return CollisionType.LEFT;
                 }
                 if (this.IsSpriteOnRight(u))
                 {
-                    console.log("Collision Type PRizes Right");
-
                     u.ColliseRight(this); return CollisionType.RIGHT;
                 }
                 if (this.IsSpriteUp(u))
                 {
-                    console.log("Collision Type PRizes Up");
-     
                     u.ColliseUp(this);
                     return CollisionType.UP;
                 }
                 if (this.IsSpriteBottom(u))
                 {
-                    console.log("Collision Type PRizes Bottom");
-       
                     u.ColliseBottom(this);
                     return CollisionType.BOTTOM;
                 }
@@ -107,8 +99,7 @@ namespace Mario
 
         public override void Dead()
         {
-            MessageBox.Show("test");
-            OnDead(this, EventArgs.Empty);
+            Deading(this, EventArgs.Empty);
         }
 
         public void Kick(Unit s)

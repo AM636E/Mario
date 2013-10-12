@@ -55,11 +55,6 @@ namespace Mario
         {
             _jump();
 
-            /*     if(_jump == _player.MoveDown)
-                 {
-                     var a = 4;
-                 }*/
-
             if (_player.X < 200)
             {
                 _jump = _player.MoveDown;

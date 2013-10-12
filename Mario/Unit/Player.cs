@@ -8,6 +8,7 @@ namespace Mario
 {
     public enum MotionState
     {
+        Moving,
         MovingLeft,
         MovingRight,
         Jump,
@@ -69,38 +70,6 @@ namespace Mario
             }
         }
 
-        public CollisionType CheckCollision(IList units)
-        {
-            foreach (Unit u in units)
-            {
-                if (this.IsSpriteOnLeft(u))
-                {
-                    console.log( "Left ", u.ToString());
-                    u.ColliseLeft(this);
-                    return CollisionType.LEFT;
-                }
-                if (this.IsSpriteOnRight(u))
-                {
-                    console.log( "Right " ,u.ToString());
-                    u.ColliseRight(this); return CollisionType.RIGHT;
-                }
-                if (this.IsSpriteUp(u))
-                {
-                    console.log(u.ToString());
-                    u.ColliseUp(this);
-                    return CollisionType.UP;
-                }
-                if (this.IsSpriteBottom(u))
-                {
-                    console.log(u.ToString());
-                    u.ColliseBottom(this);
-                    return CollisionType.BOTTOM;
-                }
-            }
-
-            return CollisionType.NONE;
-        }
-
         public override void Dead()
         {
             if (Deading != null)
@@ -134,6 +103,38 @@ namespace Mario
         public void JumpLeft()
         {
             console.log("JumpLeft");
+        }
+
+        public CollisionType CheckCollision(IList units)
+        {
+            foreach (Unit u in units)
+            {
+                if (this.IsSpriteOnLeft(u))
+                {
+                    console.log("Left ", u.ToString());
+                    u.ColliseLeft(this);
+                    return CollisionType.LEFT;
+                }
+                if (this.IsSpriteOnRight(u))
+                {
+                    console.log("Right ", u.ToString());
+                    u.ColliseRight(this); return CollisionType.RIGHT;
+                }
+                if (this.IsSpriteUp(u))
+                {
+                    console.log(u.ToString());
+                    u.ColliseUp(this);
+                    return CollisionType.UP;
+                }
+                if (this.IsSpriteBottom(u))
+                {
+                    console.log(u.ToString());
+                    u.ColliseBottom(this);
+                    return CollisionType.BOTTOM;
+                }
+            }
+
+            return CollisionType.NONE;
         }
 
         public override void ColliseLeft(Player p) { }

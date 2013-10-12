@@ -7,10 +7,14 @@ namespace Mario
 {
     public abstract class MovableUnit : Unit, IMovable
     {
+        protected Dictionary<MotionState, Mover> movers = new Dictionary<MotionState, Mover>();
+        protected MotionState _motionState = MotionState.NotMoving;
+        public MotionState MotionState { get { return _motionState; } set { _motionState = value; } }
+
         public const int STEP = 20;//number of pixels unit that unit step have
 
         public event EventHandler MovedLeft;
-        public event EventHandler MovedRight;
+        public event EventHandler MovedRight;       
 
         public delegate void Mover();
 
@@ -69,13 +73,7 @@ namespace Mario
 
         public void Move()
         {
-            this.movers[_motionState]();
+            this.movers[_motionState]();            
         }
-
-        protected Dictionary<MotionState, Mover> movers = new Dictionary<MotionState, Mover>();
-
-        protected MotionState _motionState = MotionState.NotMoving;
-
-        public MotionState MotionState { get { return _motionState; } set { _motionState = value; } }
     }
 }

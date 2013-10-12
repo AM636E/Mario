@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,6 +47,5 @@ namespace Mario
         public virtual void ColliseRight(Player p) { Dead(); }
         public virtual void ColliseUp(Player p) { Dead(); }
         public virtual void ColliseBottom(Player p) { Dead(); }
-
     }
 }

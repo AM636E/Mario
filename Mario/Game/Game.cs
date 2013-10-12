@@ -48,7 +48,8 @@ namespace Mario
             _canvas.KeyDown += this.OnKeyDown;
             _canvas.KeyUp += this.OnKeyUp;
             AddHandlers(_prizes, this.OnUnitNeedUpdate);
-            AddHandlers(_enemyes, this.OnUnitNeedUpdate);            
+            AddHandlers(_enemyes, this.OnUnitNeedUpdate);
+        //    AddHandlers(_enemyes, this.EnemyMoveHandler);
         }
 
         public Game(Form canvas, int width, int height)
@@ -80,6 +81,21 @@ namespace Mario
             _player.MovedRight += new EventHandler(_player_MovedRight);
             _player.Jumping += _player_Jumping;
             _player.JumpingLeft += _player_JumpingLeft;
+        }
+
+        public void EnemyMoveHandler(Object sender, EventArgs e)
+        {
+            Enemy enemy = sender as Enemy;
+            //MessageBox 
+            if (!enemy.IsSpriteOnLeft(_player) && enemy.X > 0)
+            {
+                enemy.MoveLeft();
+            }
+            else
+            {
+                MessageBox.Show("asd");
+                _player.Dead();
+            }
         }
 
         void _player_JumpingLeft(object sender, EventArgs e)

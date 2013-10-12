@@ -18,22 +18,24 @@ namespace Mario
             {
                 _player.MoveRight();
             }
-       }
+        }
 
         private void _player_MovedLeft(object sender, EventArgs e)
         {
-            if (_collisionPrizes != CollisionType.LEFT && _collisionEnemies == CollisionType.LEFT && _player.X >= 0)
+            if (_collisionPrizes != CollisionType.LEFT && _collisionEnemies != CollisionType.LEFT && _player.X >= 0)
             {
                 _player.MoveLeft();
             }
-        }       
+        }
 
         private void _gameLoop_Tick(object sender, EventArgs e)
         {
             _collisionEnemies = _player.CheckCollision(_enemyes);
             _collisionPrizes = _player.CheckCollision(_prizes);
+            _enemyes[0].MotionState = MotionState.MovingRight;
+            _enemyes[0].Move();
             _player.Move();
-            _canvas.Invalidate();           
+            _canvas.Invalidate();
         }
 
         private void KeyDown(object sender, KeyEventArgs e)
@@ -53,16 +55,16 @@ namespace Mario
         {
             _jump();
 
-            if(_jump == _player.MoveDown)
-            {
-                var a = 4;
-            }
+            /*     if(_jump == _player.MoveDown)
+                 {
+                     var a = 4;
+                 }*/
 
-            if(_player.X < 200)
+            if (_player.X < 200)
             {
                 _jump = _player.MoveDown;
             }
-            if(_player.IsSpriteBottom(_ground))
+            if (_player.IsSpriteBottom(_ground))
             {
                 _jump = _player.MoveUp;
                 _player.MotionState = MotionState.NotMoving;

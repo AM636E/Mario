@@ -27,8 +27,6 @@ namespace Mario
         private List<Prize> _prizes;
         private List<Enemy> _enemyes;
         private List<Unit> _mustUpdate;
-        private Dictionary<CollisionType, CollisionAction> _collisionActions;
-
         
         public List<Unit> NeedUpdate { get { return _mustUpdate; } }
     }

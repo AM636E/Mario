@@ -129,22 +129,6 @@ namespace Mario
             this.Y += 100;
         }
 
-        public void Jump()
-        {
-            console.Clear();
-            this.Y += _plusY;
-            
-            if(this.Y > _maxJumpHeight)
-            {
-                _plusY *= -1;
-            }
-            
-            if(this.Y == _startY )
-            {
-                _motionState = Mario.MotionState.NotMoving;
-            }
-        }
-
         public override void Draw(System.Drawing.Graphics g)
         {
             base.Draw(g);

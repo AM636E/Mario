@@ -36,12 +36,13 @@ namespace Mario
         public override void ColliseUp(Player p)
         {
             Dead();
-            p.Score += this.Cost;MessageBox.Show("Bottom");
+            p.Score += this.Cost;
+            console.log(this.ToString(), " collised up");
         }
 
         public override void ColliseBottom(Player p)
         {
-            MessageBox.Show("Bottom");
+            console.log(this.ToString(), " collised bottom");
         }
 
         public override void ColliseRight(Player p) { }

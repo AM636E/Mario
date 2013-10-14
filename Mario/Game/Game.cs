@@ -45,6 +45,11 @@ namespace Mario
             _mustUpdate.Add(_prizes[0]);
             _mustUpdate.Add(_enemyes[0]);
 
+            _prizes[0].Deading += (o, e) =>
+                {
+                    console.log((o as Prize).ToString(), " dead!!!");
+                };
+
             _canvas.KeyDown += this.OnKeyDown;
             _canvas.KeyUp += this.OnKeyUp;
             AddHandlers(_prizes, this.OnUnitNeedUpdate);
@@ -86,14 +91,17 @@ namespace Mario
         public void EnemyMoveHandler(Object sender, EventArgs e)
         {
             Enemy enemy = sender as Enemy;
-            //MessageBox 
+
+            enemy.CollisionEnemies = enemy.CheckCollision(_enemyes);
+            enemy.CollisionPrizes = enemy.CheckCollision(_prizes);
+
             if (!enemy.IsSpriteOnLeft(_player) && enemy.X > 0)
             {
                 enemy.MoveLeft();
             }
             else
             {
-                MessageBox.Show("asd");
+              //  MessageBox.Show("asd");
                 _player.Dead();
             }
         }

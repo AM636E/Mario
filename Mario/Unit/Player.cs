@@ -25,7 +25,6 @@ namespace Mario
         private int _startY;
         private bool _isOnGround = false;
 
-        public event EventHandler Deading;
         public event EventHandler Jumping;
         public event EventHandler JumpingLeft;
 
@@ -70,13 +69,6 @@ namespace Mario
             }
         }
 
-        public override void Dead()
-        {
-            if (Deading != null)
-            {
-                Deading(this, EventArgs.Empty);
-            }
-        }
         public void Kick(Unit s)
         {
             s.Life -= _POWER;
@@ -105,35 +97,39 @@ namespace Mario
             console.log("JumpLeft");
         }
 
-        public CollisionType CheckCollision(IList units)
+        public override CollisionType CheckCollision(IList units)
         {
+            console.log("------\n");
+            console.log(this.ToString(), " checkcollision");
             foreach (Unit u in units)
             {
                 if (this.IsSpriteOnLeft(u))
                 {
                     console.log("Left ", u.ToString());
-                    u.ColliseLeft(this);
+                    u.ColliseLeft(this); console.log("\n-----------\n");
                     return CollisionType.LEFT;
                 }
                 if (this.IsSpriteOnRight(u))
                 {
-                    console.log("Right ", u.ToString());
-                    u.ColliseRight(this); return CollisionType.RIGHT;
+                    console.log("Right Player collision ", u.ToString());
+                    u.ColliseRight(this); console.log("\n-----------\n");
+                    return CollisionType.RIGHT;
                 }
                 if (this.IsSpriteUp(u))
                 {
                     console.log(u.ToString());
-                    u.ColliseUp(this);
+                    u.ColliseUp(this); console.log("\n-----------\n");
                     return CollisionType.UP;
                 }
                 if (this.IsSpriteBottom(u))
                 {
                     console.log(u.ToString());
-                    u.ColliseBottom(this);
+                    u.ColliseBottom(this); console.log("\n-----------\n");
                     return CollisionType.BOTTOM;
                 }
             }
 
+            console.log("\n-----------\n");
             return CollisionType.NONE;
         }
 

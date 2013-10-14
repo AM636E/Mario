@@ -30,6 +30,11 @@ namespace Mario
             movers.Add(Mario.MotionState.MovingRight, this.MoveRight);
         }
 
+        public override void Dead()
+        {
+            console.log(this, " is dead");
+        }
+
         public override void ColliseRight(Player p)
         {
             p.Dead();

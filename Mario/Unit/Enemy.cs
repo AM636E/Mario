@@ -32,7 +32,7 @@ namespace Mario
 
         public override void Dead()
         {
-            console.log(this, " is dead");
+          
         }
 
         public override void ColliseRight(Player p)

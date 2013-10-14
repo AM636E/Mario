@@ -55,9 +55,12 @@ namespace Mario
 
         void _player_Jumping(object sender, EventArgs e)
         {
+            console.log("\n--------------JUmp-------------\n");
+            console.log("X :", _player.X.ToString());
+            console.log("Y :", _player.Y.ToString());
             _jump();
 
-            if (_player.X < 200)
+            if (_player.Y < 200)
             {
                 _jump = _player.MoveDown;
             }

@@ -94,42 +94,41 @@ namespace Mario
 
         public void JumpLeft()
         {
-            console.log("JumpLeft");
+              
         }
 
         public override CollisionType CheckCollision(IList units)
         {
-            console.log("------\n");
-            console.log(this.ToString(), " checkcollision");
+        
             foreach (Unit u in units)
             {
                 if (this.IsSpriteOnLeft(u))
                 {
-                    console.log("Left ", u.ToString());
-                    u.ColliseLeft(this); console.log("\n-----------\n");
+        
+                    u.ColliseLeft(this); 
                     return CollisionType.LEFT;
                 }
                 if (this.IsSpriteOnRight(u))
                 {
-                    console.log("Right Player collision ", u.ToString());
-                    u.ColliseRight(this); console.log("\n-----------\n");
+                     
+                    u.ColliseRight(this);
                     return CollisionType.RIGHT;
                 }
                 if (this.IsSpriteUp(u))
                 {
                     console.log(u.ToString());
-                    u.ColliseUp(this); console.log("\n-----------\n");
+                    u.ColliseUp(this);  
                     return CollisionType.UP;
                 }
                 if (this.IsSpriteBottom(u))
                 {
                     console.log(u.ToString());
-                    u.ColliseBottom(this); console.log("\n-----------\n");
+                    u.ColliseBottom(this); 
                     return CollisionType.BOTTOM;
                 }
             }
 
-            console.log("\n-----------\n");
+
             return CollisionType.NONE;
         }
 

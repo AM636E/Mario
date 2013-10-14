@@ -47,14 +47,13 @@ namespace Mario
 
             _prizes[0].Deading += (o, e) =>
                 {
-                    console.log((o as Prize).ToString(), " dead!!!");
+                    console.log((o as Prize).ToString(), " Dead");
                 };
 
             _canvas.KeyDown += this.OnKeyDown;
             _canvas.KeyUp += this.OnKeyUp;
             AddHandlers(_prizes, this.OnUnitNeedUpdate);
             AddHandlers(_enemyes, this.OnUnitNeedUpdate);
-        //    AddHandlers(_enemyes, this.EnemyMoveHandler);
         }
 
         public Game(Form canvas, int width, int height)
@@ -74,7 +73,7 @@ namespace Mario
             : this(canvas, width, height)
         {
             _player = player;
-            _player.Deading += (sender, e) => { MessageBox.Show("Aaa!"); };
+            _player.Deading += (sender, e) => { MessageBox.Show("Aaa!  };"); };
         }
 
         public void Start()
@@ -101,7 +100,7 @@ namespace Mario
             }
             else
             {
-              //  MessageBox.Show("asd");
+              //  MessageBox.Show(" 
                 _player.Dead();
             }
         }

@@ -37,12 +37,12 @@ namespace Mario
         {
             Dead();
             p.Score += this.Cost;
-            console.log(this.ToString(), " collised up");
+            
         }
 
         public override void ColliseBottom(Player p)
         {
-            console.log(this.ToString(), " collised bottom");
+            
         }
 
         public override void ColliseRight(Player p) { }
@@ -50,7 +50,7 @@ namespace Mario
 
         public override void Dead()
         {
-            console.log(this.ToString(), " dead");
+         
         }
     }
 }

@@ -53,8 +53,8 @@ namespace Mario
             _canvas.KeyDown += this.OnKeyDown;
             _canvas.KeyUp += this.OnKeyUp;
             AddHandlers(_prizes, this.OnUnitNeedUpdate);
-         //   AddHandlers(_enemyes, this.OnUnitNeedUpdate);
-         //   AddHandlers(_enemyes, this.EnemyMoveHandler);
+            AddHandlers(_enemyes, this.OnUnitNeedUpdate);
+            AddHandlers(_enemyes);
         }
 
         public Game(Form canvas, int width, int height)
@@ -93,6 +93,28 @@ namespace Mario
 
         }
 
+        public delegate Enemy MapFunction(Enemy x);
+
+        public List<Enemy> Map(List<Enemy> target, MapFunction func )
+        {
+            List<Enemy> newlist = new List<Enemy>(target.Count);
+            
+            for(var i = 0; i < target.Count; i ++)
+            {
+                newlist[i] = func(target[i]);
+            }
+
+            return newlist;
+        }
+
+        public void AddHandlers(List<Enemy> enemies)
+        {
+            for(var i = 0; i < enemies.Count; i ++)
+            {
+                enemies[i].MovedRight += this.EnemyMoveHandler;
+            }
+        }
+
         public void CreateGraphics()
         {
             _graphics = _canvas.CreateGraphics();
@@ -104,6 +126,7 @@ namespace Mario
             {
                 u.OnNeedUpdate += handler;
             }
+
         }
 
         public void UpdateView(Graphics g)

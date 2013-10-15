@@ -75,6 +75,7 @@ namespace Mario
 
         public void Move()
         {
+            console.log(this, " moves ", this.MotionState);
             this.movers[_motionState]();            
         }
     }

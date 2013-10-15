@@ -31,27 +31,25 @@ namespace Mario
         public void EnemyMoveHandler(Object sender, EventArgs e)
         {
             Enemy enemy = sender as Enemy;
-            console.log("enemy moves");
+
             enemy.Collision = enemy.CheckCollision(_prizes);
-            console.log("Enemy collision ", enemy.Collision);
+
             if (enemy.Collision == CollisionType.NONE && enemy.X > 0)
             {
-            //    enemy.MoveRight();
+                enemy.MoveRight();
             }
             else
             {
-             // _player.Dead();
+                _player.Dead();
             }
         }
 
         private void _gameLoop_Tick(object sender, EventArgs e)
         {
-
             _player.CollisionPrizes = _player.CheckCollision(_enemyes);
             _player.CollisionEnemies = _player.CheckCollision(_prizes);
 
-            _enemyes[0].MotionState = MotionState.MovingRight;
-            _enemyes[0].Move();
+            _enemyes[0].FireMoveRightEvent();
 
             _player.Move();
             _canvas.Invalidate();

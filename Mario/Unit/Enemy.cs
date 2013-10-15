@@ -25,8 +25,8 @@ namespace Mario
             : base(bitmapPath, life)
         {
             this.position = p;;
-            movers.Add(Mario.MotionState.MovingLeft, this.MoveLeft);
-            movers.Add(Mario.MotionState.MovingRight, this.MoveRight);
+            movers.Add(Mario.MotionState.MovingLeft, this.FireMoveLeftEvent);
+            movers.Add(Mario.MotionState.MovingRight, this.FireMoveRightEvent);
         }
 
         public override void Dead()

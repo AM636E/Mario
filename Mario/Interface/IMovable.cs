@@ -8,5 +8,6 @@ namespace Mario
     interface IMovable
     {
         void Move();
+        MotionState MotionState { get; set; }
     }
 }

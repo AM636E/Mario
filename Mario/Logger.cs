@@ -5,20 +5,24 @@ using System.Text;
 using System.IO;
 namespace Mario
 {
-    static class Logger
+    static class console
     {
         private const string _path_ = "./log.txt";
 
-        static Logger()
+        static console()
         {
 
         }
 
-        public static void Log(string what)
+        public static void log(params object[] what)
         {
             using (StreamWriter st = new StreamWriter(_path_, true))
             {
-                st.WriteLine(what);
+                foreach ( var i in what )
+                {
+                    st.Write(i.ToString() + ' ');
+                }
+                st.WriteLine("----");
             }
         }
 

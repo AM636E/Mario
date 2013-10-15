@@ -1,0 +1,103 @@
+﻿using System;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Mario
+{
+    enum MotionState
+    {
+        MovingLeft,
+        MovingRight,
+        Jump,
+        JumpLeft,
+        JumpRight,
+        DoubleJump,
+        NotMoving,
+    }
+
+    class Player: MovableUnit, IPlayer
+    {
+        public event EventHandler Dead;
+
+        private const int _POWER = 20;
+
+        public Player(string bitmap, int life):
+            base(bitmap, life )
+        {
+            Logger.Clear();
+            movers.Add(Mario.MotionState.MovingLeft, this.FireMoveLeftEvent);
+            movers.Add(Mario.MotionState.MovingRight, this.FireMoveRightEvent);
+        }
+
+        public Player(string bitmap, int life, System.Drawing.Point p)
+            :this(bitmap, life )
+        {
+            this.position = p;
+        }
+
+        public Player(String bitmap, int life, int x, int y)
+            :this( bitmap, life, new System.Drawing.Point(x, y ) )
+        { }
+
+        private CollisionType CheckCollision(IList units)
+        {
+            foreach (Unit u in units)
+            {
+                if (this.IsCollisedLeft(u) || this.X < 0)
+                {
+                    return CollisionType.LEFT;
+                }
+                if (this.IsCollisedRight(u))
+                {
+                    return CollisionType.RIGHT;
+                }
+                if (this.IsCollisedUp(u))
+                {
+                    return CollisionType.UP;
+                }
+                if (this.IsCollisedBottom(u))
+                {
+                    return CollisionType.BOTTOM;
+                }
+            }
+            return CollisionType.NONE;
+        }
+
+        public void CollisedWithPrizes(Prize[] prizes)
+        {
+            switch(CheckCollision(prizes))
+            {
+                case CollisionType.LEFT:
+                    { break; }
+
+            }
+        }
+
+        public void CollisedWithEnemies(Enemy[] enemies)
+        {
+            switch
+        }
+
+        public override void Dead()
+        {
+            Dead(this, EventArgs.Empty);
+        }       
+
+        public void Kick(Unit s)
+        {
+            s.Life -= _POWER;       
+        }
+
+        public void Jump()
+        {
+            Logger.Log("Jump");
+        }
+
+        public void JumpLeft()
+        {
+            Logger.Log("JumpLeft");
+        }
+    }
+}

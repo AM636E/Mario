@@ -47,6 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game\GameEventHandlers.cs" />
+    <Compile Include="Game\GameFields.cs" />
+    <Compile Include="Game\GameUserInput.cs" />
+    <Compile Include="Interface\ICollisable.cs" />
     <Compile Include="Interface\IUnitContainer.cs" />
     <Compile Include="Sprite\BitMapSprite.cs" />
     <Compile Include="Prize\Box.cs" />
@@ -58,7 +62,7 @@
     <Compile Include="Form1.designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Game.cs" />
+    <Compile Include="Game\Game.cs" />
     <Compile Include="Interface\IBoxer.cs" />
     <Compile Include="Interface\IMovable.cs" />
     <Compile Include="Interface\IPlayer.cs" />

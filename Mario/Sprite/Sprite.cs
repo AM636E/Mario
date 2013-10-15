@@ -6,17 +6,27 @@ using System.Drawing;
 
 namespace Mario
 {
+    public enum CollisionType 
+    {
+        NONE,
+        LEFT,
+        RIGHT,
+        UP,
+        GROUND,
+        BOTTOM,
+    }
+
     public  abstract class Sprite
     {
-        public event EventHandler NeedUpdateTrue;
+        public event EventHandler OnNeedUpdate;
 
         protected Point position;
         protected int width;
         protected int height;
 
         public Point Position { get { return position; } }
-        public int X { get { return position.X; } set { position.X = value; } }
-        public int Y { get { return position.Y; } set { position.Y = value; } }
+        public int X { get { return position.X; } set { position.X = value; NeedUpdate = true; } }
+        public int Y { get { return position.Y; } set { position.Y = value; NeedUpdate = true; } }
         public int Width { get { return width; } }
         public int Height { get { return height; } }
         public int UpRightX { get { return X + width; } }
@@ -35,9 +45,9 @@ namespace Mario
             set
             {
                 isNeedUpdate = value;
-                if (isNeedUpdate == true && NeedUpdateTrue != null)
+                if (value == true && OnNeedUpdate != null)
                 {
-                    NeedUpdateTrue(this, EventArgs.Empty);
+                    OnNeedUpdate(this, EventArgs.Empty);
                 }
             }
         }
@@ -45,7 +55,7 @@ namespace Mario
         public Sprite()
         {
             position = new Point();
-            isNeedUpdate = false;
+            isNeedUpdate = true;
         }
 
         public Sprite(Point position, int width, int height):
@@ -58,8 +68,7 @@ namespace Mario
 
         public abstract void Draw(Graphics g);
 
-
-        public bool IsCollisedUp(Sprite s)
+        public bool IsSpriteUp(Sprite s)
         {
             if (this.Rectangle.IntersectsWith(s.Rectangle) && this.Y >= s.Y)
             {
@@ -69,7 +78,7 @@ namespace Mario
             return false;
         }
 
-        public bool IsCollisedBottom(Sprite s)
+        public bool IsSpriteBottom(Sprite s)
         {
             if (this.Rectangle.IntersectsWith(s.Rectangle) && this.Y <= s.Y)
             {
@@ -79,7 +88,7 @@ namespace Mario
             return false;
         }
 
-        public bool IsCollisedLeft(Sprite s)
+        public bool IsSpriteOnRight(Sprite s)
         {
             if (this.Rectangle.IntersectsWith(s.Rectangle) && this.X < s.X)
             {
@@ -89,7 +98,7 @@ namespace Mario
             return false;
         }
 
-        public bool IsCollisedRight(Sprite s)
+        public bool IsSpriteOnLeft(Sprite s)
         {
             if (this.Rectangle.IntersectsWith(s.Rectangle) && this.X > s.X)
             {
@@ -97,6 +106,30 @@ namespace Mario
             }
 
             return false;
+        }
+
+        public CollisionType Collision(Sprite s)
+        {
+            if (IsSpriteOnRight(s))
+            {
+                return CollisionType.LEFT;
+            }
+            if (IsSpriteOnRight(s))
+            {
+                return CollisionType.RIGHT;
+            }
+
+            if (IsSpriteUp(s))
+            {
+                return CollisionType.UP;
+            }
+
+            if (IsSpriteBottom(s))
+            {
+                return CollisionType.BOTTOM;
+            }
+
+            return CollisionType.NONE;
         }
     }
 }

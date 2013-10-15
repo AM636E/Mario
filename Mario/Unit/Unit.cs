@@ -1,13 +1,37 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Mario
 {
-    public abstract class Unit: BitMapSprite
+    public abstract class Unit: BitMapSprite, Mario.Interface.ICollisable
     {
-        protected const int STEP = 20;//number of pixels unit that unit step have
+        public event EventHandler Deading;
+
+        private CollisionType _collisionEnemies = CollisionType.NONE;
+        private CollisionType _collisionPrizes = CollisionType.NONE;
+
+        private CollisionType _collisioin = CollisionType.NONE;
+
+        public CollisionType Collision
+        {
+            get { return _collisioin;  }
+            set { _collisioin = value;  }
+        }
+
+        public CollisionType CollisionEnemies
+        {
+            get { return _collisionEnemies; }
+            set { _collisionEnemies = value; }
+        }
+
+        public CollisionType CollisionPrizes
+        {
+            get { return _collisionPrizes; }
+            set { _collisionPrizes = value; }
+        }
 
         protected int life;
 
@@ -42,6 +66,46 @@ namespace Mario
             return life <= 0;
         }
 
-        public abstract void Dead();
+        public virtual void Dead()
+        {
+            if(Deading != null)
+            {
+                Deading(this, EventArgs.Empty);
+            }
+        }
+
+        public virtual CollisionType CheckCollision(IList units)
+        {
+            foreach (Unit u in units)
+            {
+                if(this == u)
+                {
+                    continue;
+                }
+                if (this.IsSpriteOnLeft(u))
+                {
+                    return _collisioin = CollisionType.LEFT;
+                }
+                if (this.IsSpriteOnRight(u))
+                {
+                    return _collisioin = CollisionType.RIGHT;
+                }
+                if (this.IsSpriteUp(u))
+                {
+                    return _collisioin = CollisionType.UP;
+                }
+                if (this.IsSpriteBottom(u))
+                {
+                    return _collisioin = CollisionType.BOTTOM;
+                }
+            }
+
+            return _collisioin = CollisionType.NONE;
+        }
+
+        public virtual void ColliseLeft(Player p) { Dead();  }
+        public virtual void ColliseRight(Player p) { Dead(); }
+        public virtual void ColliseUp(Player p) { Dead(); }
+        public virtual void ColliseBottom(Player p) { Dead(); }
     }
 }

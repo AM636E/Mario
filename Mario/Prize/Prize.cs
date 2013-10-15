@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Mario.Interface;
+using System.Windows.Forms;
 
 namespace Mario
 {
@@ -31,8 +33,24 @@ namespace Mario
             : base(bitmap, p)
         { }
 
+        public override void ColliseUp(Player p)
+        {
+            Dead();
+            p.Score += this.Cost;
+            
+        }
+
+        public override void ColliseBottom(Player p)
+        {
+            
+        }
+
+        public override void ColliseRight(Player p) { }
+        public override void ColliseLeft(Player p) { }
+
         public override void Dead()
         {
+         
         }
     }
 }

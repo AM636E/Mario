@@ -5,48 +5,78 @@ using System.Text;
 
 namespace Mario
 {
-    class MovableUnit: Unit, IMovable
+    public abstract class MovableUnit : Unit, IMovable
     {
+        protected Dictionary<MotionState, Mover> movers = new Dictionary<MotionState, Mover>();
+        protected MotionState _motionState = MotionState.NotMoving;
+        public MotionState MotionState { get { return _motionState; } set { _motionState = value; } }
+
+        public const int STEP = 20;//number of pixels unit that unit step have
+
         public event EventHandler MovedLeft;
-        public event EventHandler MovedRight;
+        public event EventHandler MovedRight;       
+
+        public delegate void Mover();
 
         public MovableUnit()
-            : base ()
-        {}
+            : base()
+        { }
 
         public MovableUnit(string bitmapPath) :
             base(bitmapPath)
-        { }
+        {
+            movers.Add(Mario.MotionState.NotMoving, delegate() { });
+        }
 
         public MovableUnit(string bitmapPath, int life)
-            :base(bitmapPath, life)
-        {  }
+            : this(bitmapPath)
+        { this.life = life; }
 
         public MovableUnit(string bitmapPath, int life, System.Drawing.Point p)
-            : base(bitmapPath, life, p)
-        { }
+            : base(bitmapPath, life)
+        { this.position = p; }
 
-        public void MoveLeft()
-        {
-            Logger.Log("Movable Unit Width: " + this.Width.ToString());
-            this.X += STEP;
-            if (MovedLeft != null)
-            {
+        /*
+         * Move Event Just fires an event 
+         * Event handler must check if unit can move on
+         * and move or not move unit                   
+         */                                            
+        public void FireMoveLeftEvent()                
+        {                                              
+            if (MovedLeft != null)                     
+            {                                          
                 MovedLeft(this, EventArgs.Empty);
             }
         }
-        public void MoveRight()
-        {
-            this.X -= STEP;
 
+        public void FireMoveRightEvent()
+        {
             if (MovedRight != null)
             {
                 MovedRight(this, EventArgs.Empty);
             }
         }
+        /*-------------------------------------------*/
+
+        public void MoveLeft()
+        {
+            this.X -= STEP;
+        }
+
+        public void MoveRight()
+        {
+            this.X += STEP;
+        }
 
         public override void Dead()
         {
+            console.log("player is dead");
+        }
+
+        public void Move()
+        {
+            console.log(this, " moves ", this.MotionState);
+            this.movers[_motionState]();            
         }
     }
 }

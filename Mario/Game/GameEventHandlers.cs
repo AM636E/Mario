@@ -28,26 +28,33 @@ namespace Mario
             }
         }
 
+        public void EnemyMoveHandler(Object sender, EventArgs e)
+        {
+            Enemy enemy = sender as Enemy;
+            console.log("enemy moves");
+            enemy.Collision = enemy.CheckCollision(_prizes);
+            console.log("Enemy collision ", enemy.Collision);
+            if (enemy.Collision == CollisionType.NONE && enemy.X > 0)
+            {
+            //    enemy.MoveRight();
+            }
+            else
+            {
+             // _player.Dead();
+            }
+        }
+
         private void _gameLoop_Tick(object sender, EventArgs e)
         {
+
             _player.CollisionPrizes = _player.CheckCollision(_enemyes);
             _player.CollisionEnemies = _player.CheckCollision(_prizes);
-            
+
             _enemyes[0].MotionState = MotionState.MovingRight;
             _enemyes[0].Move();
-            
+
             _player.Move();
             _canvas.Invalidate();
-        }
-
-        private void KeyDown(object sender, KeyEventArgs e)
-        {
-            MessageBox.Show(e.KeyData.ToString());
-        }
-
-        private void KeyUp(object sender, KeyEventArgs e)
-        {
-            MessageBox.Show(e.KeyData.ToString());
         }
 
         delegate void Jumper();
@@ -55,14 +62,19 @@ namespace Mario
 
         void _player_Jumping(object sender, EventArgs e)
         {
+            _player.CollisionPrizes = _player.CheckCollision(_enemyes);
+            _player.CollisionEnemies = _player.CheckCollision(_prizes);
             _jump();
 
             if (_player.Y < 200)
             {
                 _jump = _player.MoveDown;
             }
-            if (_player.IsSpriteBottom(_ground))
+            console.log(_collisionEnemies);
+            console.log(_collisionPrizes);
+            if (_player.IsSpriteBottom(_ground) || _player.IsSpriteBottom(_prizes[0]))
             {
+
                 _jump = _player.MoveUp;
                 _player.MotionState = MotionState.NotMoving;
             }

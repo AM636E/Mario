@@ -13,6 +13,14 @@ namespace Mario
         private CollisionType _collisionEnemies = CollisionType.NONE;
         private CollisionType _collisionPrizes = CollisionType.NONE;
 
+        private CollisionType _collisioin = CollisionType.NONE;
+
+        public CollisionType Collision
+        {
+            get { return _collisioin;  }
+            set { _collisioin = value;  }
+        }
+
         public CollisionType CollisionEnemies
         {
             get { return _collisionEnemies; }
@@ -76,23 +84,23 @@ namespace Mario
                 }
                 if (this.IsSpriteOnLeft(u))
                 {
-                    return CollisionType.LEFT;
+                    return _collisioin = CollisionType.LEFT;
                 }
                 if (this.IsSpriteOnRight(u))
                 {
-                    return CollisionType.RIGHT;
+                    return _collisioin = CollisionType.RIGHT;
                 }
                 if (this.IsSpriteUp(u))
                 {
-                    return CollisionType.UP;
+                    return _collisioin = CollisionType.UP;
                 }
                 if (this.IsSpriteBottom(u))
                 {
-                    return CollisionType.BOTTOM;
+                    return _collisioin = CollisionType.BOTTOM;
                 }
             }
 
-            return CollisionType.NONE;
+            return _collisioin = CollisionType.NONE;
         }
 
         public virtual void ColliseLeft(Player p) { Dead();  }

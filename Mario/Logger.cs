@@ -22,6 +22,7 @@ namespace Mario
                 {
                     st.Write(i.ToString() + ' ');
                 }
+                st.WriteLine("----");
             }
         }
 

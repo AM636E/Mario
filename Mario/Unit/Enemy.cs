@@ -13,8 +13,7 @@ namespace Mario
 
         public Enemy(string bitmapPath) :
             base(bitmapPath)
-        {
-        }
+        { }
 
         public Enemy(string bitmapPath, int life)
             : this(bitmapPath)
@@ -32,7 +31,7 @@ namespace Mario
 
         public override void Dead()
         {
-          
+            console.log("enemy is dead.");
         }
 
         public override void ColliseRight(Player p)
@@ -41,8 +40,7 @@ namespace Mario
         }
         public override void ColliseLeft(Player p)
         {
-            p.Dead();
+           p.Dead();
         }
-
     }
 }

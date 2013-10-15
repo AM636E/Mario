@@ -99,35 +99,34 @@ namespace Mario
 
         public override CollisionType CheckCollision(IList units)
         {
-        
+            console.log("checking");
             foreach (Unit u in units)
             {
                 if (this.IsSpriteOnLeft(u))
                 {
-        
-                    u.ColliseLeft(this); 
+                    u.ColliseLeft(this);
                     return CollisionType.LEFT;
                 }
                 if (this.IsSpriteOnRight(u))
                 {
-                     
+
                     u.ColliseRight(this);
                     return CollisionType.RIGHT;
                 }
                 if (this.IsSpriteUp(u))
                 {
                     console.log(u.ToString());
-                    u.ColliseUp(this);  
+                    console.log(u, " is bottom");
+                    u.ColliseUp(this);
                     return CollisionType.UP;
                 }
                 if (this.IsSpriteBottom(u))
                 {
-                    console.log(u.ToString());
-                    u.ColliseBottom(this); 
+                    console.log(u, " is bottom" );
+                    u.ColliseBottom(this);
                     return CollisionType.BOTTOM;
-                }
+                }                
             }
-
 
             return CollisionType.NONE;
         }

@@ -69,7 +69,9 @@ namespace Mario
         }
 
         public override void Dead()
-        { }
+        {
+            console.log("player is dead");
+        }
 
         public void Move()
         {

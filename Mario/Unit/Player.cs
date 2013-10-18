@@ -11,6 +11,8 @@ namespace Mario
         Moving,
         MovingLeft,
         MovingRight,
+        MovingUp,
+        MovingDown,
         Jump,
         JumpLeft,
         JumpRight,
@@ -40,6 +42,8 @@ namespace Mario
             console.Clear();
             movers.Add(Mario.MotionState.MovingLeft, this.FireMoveLeftEvent);
             movers.Add(Mario.MotionState.MovingRight, this.FireMoveRightEvent);
+            movers.Add(Mario.MotionState.MovingUp, this.FireMoveUpEvent);
+            movers.Add(Mario.MotionState.MovingDown, this.FireMoveDownEvent);
             movers.Add(Mario.MotionState.Jump, this.FireJumpEvent);
         }
 
@@ -106,6 +110,19 @@ namespace Mario
             this.Y += 100;
         }
 
+        public override void MoveRight()
+        {
+            base.MoveRight();
+            FireMoveDownEvent();
+        }
+
+        public override void MoveLeft()
+        {
+            this.X -= STEP;
+
+            FireMoveDownEvent();
+        }
+
         public void MoveDown(Sprite ground)
         {
             if(this.IsSpriteBottom(ground) == false)
@@ -126,7 +143,6 @@ namespace Mario
 
         public override CollisionType CheckCollision(IList units)
         {
-            console.log("checking");
             foreach (Unit u in units)
             {
                 if (this.IsSpriteOnLeft(u))

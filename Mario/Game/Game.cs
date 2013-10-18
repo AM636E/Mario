@@ -74,7 +74,7 @@ namespace Mario
             : this(canvas, width, height)
         {
             _player = player;
-            _player.Deading += (sender, e) => { MessageBox.Show("Aaa!  };"); };
+            
         }
 
         public void Start()
@@ -82,9 +82,13 @@ namespace Mario
             _gameLoop.Tick += new EventHandler(_gameLoop_Tick);
             _gameLoop.Start();
 
+            _player.MoveDownEvent += _player_MoveDownEvent;
+            _player.Deading += (sender, e) => { MessageBox.Show("Aaa!  };"); };
             _player.MovedLeft += new EventHandler(_player_MovedLeft);
             _player.MovedRight += new EventHandler(_player_MovedRight);
+            _player.MoveUpEvent += _player_MoveUpEvent;
             _player.Jumping += _player_Jumping;
+
             _player.JumpingLeft += _player_JumpingLeft;
         }
 

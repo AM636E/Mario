@@ -58,12 +58,12 @@ namespace Mario
         }
         /*-------------------------------------------*/
 
-        public void MoveLeft()
+        public virtual void MoveLeft()
         {
             this.X -= STEP;
         }
 
-        public void MoveRight()
+        public virtual void MoveRight()
         {
             this.X += STEP;
         }

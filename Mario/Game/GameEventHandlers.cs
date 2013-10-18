@@ -28,6 +28,18 @@ namespace Mario
             }
         }
 
+        void _player_MoveUpEvent(object sender, EventArgs e)
+        {
+        }
+
+        void _player_MoveDownEvent(object sender, EventArgs e)
+        {
+            if(_collisionPrizes != CollisionType.NONE)
+            {
+                MessageBox.Show(_collisionPrizes.ToString());
+            }
+        }
+
         public void EnemyMoveHandler(Object sender, EventArgs e)
         {
             Enemy enemy = sender as Enemy;
@@ -46,8 +58,8 @@ namespace Mario
 
         private void _gameLoop_Tick(object sender, EventArgs e)
         {
-            _player.CollisionPrizes = _player.CheckCollision(_enemyes);
-            _player.CollisionEnemies = _player.CheckCollision(_prizes);
+            _player.CollisionPrizes = _collisionPrizes = _player.CheckCollision(_enemyes);
+            _player.CollisionEnemies = _collisionEnemies = _player.CheckCollision(_prizes);
 
             _enemyes[0].FireMoveRightEvent();
 

@@ -11,6 +11,8 @@ namespace Mario
         Moving,
         MovingLeft,
         MovingRight,
+        MovingUp,
+        MovingDown,
         Jump,
         JumpLeft,
         JumpRight,
@@ -27,6 +29,9 @@ namespace Mario
 
         public event EventHandler Jumping;
         public event EventHandler JumpingLeft;
+        public event EventHandler MoveDownEvent;
+        public event EventHandler MoveUpEvent;
+
 
         public bool OnGround { get { return _isOnGround; } set { _isOnGround = value; } }
         public int Score { get; set; }
@@ -35,8 +40,10 @@ namespace Mario
             base(bitmap, life)
         {
             console.Clear();
-            movers.Add(Mario.MotionState.MovingLeft, this.FireMoveLeftEvent);
-            movers.Add(Mario.MotionState.MovingRight, this.FireMoveRightEvent);
+            movers.Add(Mario.MotionState.MovingLeft, this.MoveLeft);
+            movers.Add(Mario.MotionState.MovingRight, this.MoveRight);
+            movers.Add(Mario.MotionState.MovingUp, this.MoveUp);
+            movers.Add(Mario.MotionState.MovingDown, this.MoveDown);
             movers.Add(Mario.MotionState.Jump, this.FireJumpEvent);
         }
 
@@ -51,6 +58,22 @@ namespace Mario
         public Player(String bitmap, int life, int x, int y)
             : this(bitmap, life, new System.Drawing.Point(x, y))
         { }
+
+        public void FireMoveUpEvent()
+        {
+            if(MoveUpEvent != null)
+            {
+                MoveUpEvent(this, EventArgs.Empty);
+            }
+        }
+
+        public void FireMoveDownEvent()
+        {
+            if(MoveDownEvent != null)
+            {
+                MoveDownEvent(this, EventArgs.Empty);
+            }
+        }
 
         public void FireJumpEvent()
         {
@@ -87,6 +110,27 @@ namespace Mario
             this.Y += 100;
         }
 
+        public override void MoveRight()
+        {
+            base.MoveRight();
+            FireMoveDownEvent();
+        }
+
+        public override void MoveLeft()
+        {
+            this.X -= STEP;
+
+            FireMoveDownEvent();
+        }
+
+        public void MoveDown(Sprite ground)
+        {
+            if(this.IsSpriteBottom(ground) == false)
+            {
+                MoveDown();
+            }
+        }
+
         public override void Draw(System.Drawing.Graphics g)
         {
             base.Draw(g);
@@ -99,7 +143,6 @@ namespace Mario
 
         public override CollisionType CheckCollision(IList units)
         {
-            console.log("checking");
             foreach (Unit u in units)
             {
                 if (this.IsSpriteOnLeft(u))

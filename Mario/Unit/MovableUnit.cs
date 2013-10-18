@@ -11,10 +11,7 @@ namespace Mario
         protected MotionState _motionState = MotionState.NotMoving;
         public MotionState MotionState { get { return _motionState; } set { _motionState = value; } }
 
-        public const int STEP = 20;//number of pixels unit that unit step have
-
-        public event EventHandler MovedLeft;
-        public event EventHandler MovedRight;       
+        public const int STEP = 20;//number of pixels unit that unit step have   
 
         public delegate void Mover();
 
@@ -36,36 +33,20 @@ namespace Mario
             : base(bitmapPath, life)
         { this.position = p; }
 
-        /*
-         * Move Event Just fires an event 
-         * Event handler must check if unit can move on
-         * and move or not move unit                   
-         */                                            
-        public void FireMoveLeftEvent()                
-        {                                              
-            if (MovedLeft != null)                     
-            {                                          
-                MovedLeft(this, EventArgs.Empty);
-            }
-        }
-
-        public void FireMoveRightEvent()
+        public virtual void MoveLeft()
         {
-            if (MovedRight != null)
+            if (this.CollisionPrizes != CollisionType.LEFT && this.CollisionEnemies != CollisionType.LEFT)
             {
-                MovedRight(this, EventArgs.Empty);
+                this.X -= STEP;
             }
         }
-        /*-------------------------------------------*/
 
-        public void MoveLeft()
+        public virtual void MoveRight()
         {
-            this.X -= STEP;
-        }
-
-        public void MoveRight()
-        {
-            this.X += STEP;
+            if (this.CollisionPrizes != CollisionType.RIGHT && this.CollisionEnemies != CollisionType.RIGHT)
+            {
+                this.X += STEP;
+            }
         }
 
         public override void Dead()
@@ -76,7 +57,14 @@ namespace Mario
         public void Move()
         {
             console.log(this, " moves ", this.MotionState);
-            this.movers[_motionState]();            
+            try
+            {
+                this.movers[_motionState]();
+            }
+            catch
+            {
+                this.MotionState = MotionState.NotMoving;
+            }
         }
     }
 }

@@ -25,8 +25,13 @@ namespace Mario
             : base(bitmapPath, life)
         {
             this.position = p;;
-            movers.Add(Mario.MotionState.MovingLeft, this.FireMoveLeftEvent);
-            movers.Add(Mario.MotionState.MovingRight, this.FireMoveRightEvent);
+            movers.Add(Mario.MotionState.MovingLeft, this.MoveLeft);
+            movers.Add(Mario.MotionState.MovingRight, this.MoveRight);
+        }
+
+        public Enemy(Enemy copy)
+        {
+            var a = new Enemy(copy.BitmapPath, copy.Life, new System.Drawing.Point(copy.X, copy.Y));
         }
 
         public override void Dead()

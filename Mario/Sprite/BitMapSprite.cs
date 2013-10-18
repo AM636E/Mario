@@ -9,6 +9,7 @@ namespace Mario
     public class BitMapSprite : Sprite
     {
         protected Bitmap bitmap;
+        public String BitmapPath { get; set; }
 
         public Bitmap Image { get { return bitmap; } }
 
@@ -20,6 +21,7 @@ namespace Mario
 
         public BitMapSprite(string path)
         {
+            BitmapPath = path;
             this.bitmap = new Bitmap(path);
             this.width = bitmap.Width;
             this.height = bitmap.Height;            

@@ -10,21 +10,15 @@ namespace Mario
 {
     partial class Game
     {
-        public delegate void CollisionAction();
-
-        private void _player_MovedRight(object sender, EventArgs e)
+        void _player_MoveUpEvent(object sender, EventArgs e)
         {
-            if (_collisionPrizes != CollisionType.RIGHT && _collisionEnemies != CollisionType.RIGHT)
-            {
-                _player.MoveRight();
-            }
         }
 
-        private void _player_MovedLeft(object sender, EventArgs e)
+        void _player_MoveDownEvent(object sender, EventArgs e)
         {
-            if (_collisionPrizes != CollisionType.LEFT && _collisionEnemies != CollisionType.LEFT && _player.X >= 0)
+            if (_collisionPrizes != CollisionType.NONE)
             {
-                _player.MoveLeft();
+               // MessageBox.Show(_collisionPrizes.ToString());
             }
         }
 
@@ -46,13 +40,30 @@ namespace Mario
 
         private void _gameLoop_Tick(object sender, EventArgs e)
         {
-            _player.CollisionPrizes = _player.CheckCollision(_enemyes);
-            _player.CollisionEnemies = _player.CheckCollision(_prizes);
+            _player.CollisionPrizes = _collisionPrizes = _player.CheckCollision(_enemyes);
+            _player.CollisionEnemies = _collisionEnemies = _player.CheckCollision(_prizes);
 
-            _enemyes[0].FireMoveRightEvent();
+            ActOnList(_enemyes, (enemy) => { enemy.CollisionEnemies = enemy.CheckCollision(_enemyes); enemy.CollisionPrizes = enemy.CheckCollision(_prizes); return enemy; });
+
+            ActOnList(_enemyes, (enemy) => { enemy.MoveRight(); return enemy; });
 
             _player.Move();
             _canvas.Invalidate();
+        }
+
+
+        private delegate Enemy ActOnUnit(Enemy u);
+
+        private List<Enemy> ActOnList(List<Enemy> units, ActOnUnit act)
+        {
+            List<Enemy> newList = new List<Enemy>(units.Count);
+
+            for (var i = 0; i < units.Count; i++)
+            {
+                units[i] = act(units[i]);
+            }
+
+            return newList;
         }
 
         delegate void Jumper();

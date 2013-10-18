@@ -26,9 +26,9 @@ namespace Mario
         {
             Enemy enemy = sender as Enemy;
 
-            enemy.Collision = enemy.CheckCollision(_prizes);
+            enemy.CollisionGround = enemy.CheckCollision(_prizes);
 
-            if (enemy.Collision == CollisionType.NONE && enemy.X > 0)
+            if (enemy.CollisionGround == CollisionType.NONE && enemy.X > 0)
             {
                 enemy.MoveRight();
             }
@@ -42,12 +42,13 @@ namespace Mario
         {
             _player.CollisionPrizes = _collisionPrizes = _player.CheckCollision(_enemyes);
             _player.CollisionEnemies = _collisionEnemies = _player.CheckCollision(_prizes);
+            _player.CollisionGround = (_player.IsSpriteBottom(_ground)) ? CollisionType.GROUND : CollisionType.NONE;
 
             ActOnList(_enemyes, (enemy) => { enemy.CollisionEnemies = enemy.CheckCollision(_enemyes); enemy.CollisionPrizes = enemy.CheckCollision(_prizes); return enemy; });
 
             ActOnList(_enemyes, (enemy) => { enemy.MoveRight(); return enemy; });
-
             _player.Move();
+            _player.MoveDown();
             _canvas.Invalidate();
         }
 
@@ -71,22 +72,7 @@ namespace Mario
 
         void _player_Jumping(object sender, EventArgs e)
         {
-            _player.CollisionPrizes = _player.CheckCollision(_enemyes);
-            _player.CollisionEnemies = _player.CheckCollision(_prizes);
-            _jump();
-
-            if (_player.Y < 200)
-            {
-                _jump = _player.MoveDown;
-            }
-            console.log(_collisionEnemies);
-            console.log(_collisionPrizes);
-            if (_player.IsSpriteBottom(_ground) || _player.IsSpriteBottom(_prizes[0]))
-            {
-
-                _jump = _player.MoveUp;
-                _player.MotionState = MotionState.NotMoving;
-            }
+            
         }
 
         private void OnUnitNeedUpdate(object sender, EventArgs e)

@@ -17,7 +17,7 @@ namespace Mario
             }
             if(e.KeyData == Keys.Up)
             {
-                _player.MotionState = MotionState.Jump;
+                _player.MotionState = MotionState.MovingUp;
             }
             if(e.KeyData == Keys.Space)
             {

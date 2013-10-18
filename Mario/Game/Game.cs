@@ -63,7 +63,7 @@ namespace Mario
             _canvas.Height = _canvasHeight = height;
             CreateGraphics();
 
-            _player = new Player(@"Images/Mario.jpg", 100, new Point(0, height - 200));
+            _player = new Player(@"Images/Mario.jpg", 100, new Point(0, 0));
 
             _jump = new Jumper(_player.MoveUp);
             _ground = new BitMapSprite(@"Images/ground.png", new Point(0, height - 100), width, 100);
@@ -119,7 +119,6 @@ namespace Mario
             {
                 u.OnNeedUpdate += handler;
             }
-
         }
 
         public void UpdateView(Graphics g)

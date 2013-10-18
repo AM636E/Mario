@@ -44,7 +44,7 @@ namespace Mario
             movers.Add(Mario.MotionState.MovingRight, this.MoveRight);
             movers.Add(Mario.MotionState.MovingUp, this.MoveUp);
             movers.Add(Mario.MotionState.MovingDown, this.MoveDown);
-            movers.Add(Mario.MotionState.Jump, this.FireJumpEvent);
+            movers.Add(Mario.MotionState.Jump, this.Jump);
         }
 
         public Player(string bitmap, int life, System.Drawing.Point p)
@@ -102,25 +102,28 @@ namespace Mario
 
         public void MoveUp()
         {
-            this.Y -= 100;
+            if (CollisionPrizes != CollisionType.UP)
+            {
+                this.Y -= 101;
+            }
         }
 
         public void MoveDown()
         {
-            this.Y += 100;
+            if (CollisionGround == CollisionType.NONE && CollisionPrizes == CollisionType.NONE)
+            {
+                this.Y += 100;
+            }
         }
 
         public override void MoveRight()
         {
             base.MoveRight();
-            FireMoveDownEvent();
         }
 
         public override void MoveLeft()
         {
-            this.X -= STEP;
-
-            FireMoveDownEvent();
+            base.MoveLeft();
         }
 
         public void MoveDown(Sprite ground)
@@ -131,9 +134,9 @@ namespace Mario
             }
         }
 
-        public override void Draw(System.Drawing.Graphics g)
+        public void Jump()
         {
-            base.Draw(g);
+            MoveUp();
         }
 
         public void JumpLeft()
@@ -152,20 +155,16 @@ namespace Mario
                 }
                 if (this.IsSpriteOnRight(u))
                 {
-
                     u.ColliseRight(this);
                     return CollisionType.RIGHT;
                 }
                 if (this.IsSpriteUp(u))
                 {
-                    console.log(u.ToString());
-                    console.log(u, " is bottom");
                     u.ColliseUp(this);
                     return CollisionType.UP;
                 }
                 if (this.IsSpriteBottom(u))
                 {
-                    console.log(u, " is bottom" );
                     u.ColliseBottom(this);
                     return CollisionType.BOTTOM;
                 }                

@@ -15,7 +15,7 @@ namespace Mario
 
         private CollisionType _collisioin = CollisionType.NONE;
 
-        public CollisionType Collision
+        public CollisionType CollisionGround
         {
             get { return _collisioin;  }
             set { _collisioin = value;  }

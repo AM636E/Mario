@@ -40,10 +40,10 @@ namespace Mario
             base(bitmap, life)
         {
             console.Clear();
-            movers.Add(Mario.MotionState.MovingLeft, this.FireMoveLeftEvent);
-            movers.Add(Mario.MotionState.MovingRight, this.FireMoveRightEvent);
-            movers.Add(Mario.MotionState.MovingUp, this.FireMoveUpEvent);
-            movers.Add(Mario.MotionState.MovingDown, this.FireMoveDownEvent);
+            movers.Add(Mario.MotionState.MovingLeft, this.MoveLeft);
+            movers.Add(Mario.MotionState.MovingRight, this.MoveRight);
+            movers.Add(Mario.MotionState.MovingUp, this.MoveUp);
+            movers.Add(Mario.MotionState.MovingDown, this.MoveDown);
             movers.Add(Mario.MotionState.Jump, this.FireJumpEvent);
         }
 

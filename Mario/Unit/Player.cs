@@ -27,6 +27,9 @@ namespace Mario
 
         public event EventHandler Jumping;
         public event EventHandler JumpingLeft;
+        public event EventHandler MoveDownEvent;
+        public event EventHandler MoveUpEvent;
+
 
         public bool OnGround { get { return _isOnGround; } set { _isOnGround = value; } }
         public int Score { get; set; }
@@ -51,6 +54,22 @@ namespace Mario
         public Player(String bitmap, int life, int x, int y)
             : this(bitmap, life, new System.Drawing.Point(x, y))
         { }
+
+        public void FireMoveUpEvent()
+        {
+            if(MoveUpEvent != null)
+            {
+                MoveUpEvent(this, EventArgs.Empty);
+            }
+        }
+
+        public void FireMoveDownEvent()
+        {
+            if(MoveDownEvent != null)
+            {
+                MoveDownEvent(this, EventArgs.Empty);
+            }
+        }
 
         public void FireJumpEvent()
         {
@@ -85,6 +104,14 @@ namespace Mario
         public void MoveDown()
         {
             this.Y += 100;
+        }
+
+        public void MoveDown(Sprite ground)
+        {
+            if(this.IsSpriteBottom(ground) == false)
+            {
+                MoveDown();
+            }
         }
 
         public override void Draw(System.Drawing.Graphics g)

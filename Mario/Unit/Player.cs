@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Mario
 {
-    public enum MotionState 
+    public enum MotionState : int
     {
         MovingRight = 0,
         MovingLeft = 1,
@@ -104,13 +104,12 @@ namespace Mario
         {
             if (CollisionPrizes != CollisionType.UP)
             {
-                this.Y -= 101;
+                this.Y -= 200;
             }
         }
 
         public void MoveDown()
         {
-
             if (CollisionGround == CollisionType.NONE && CollisionPrizes == CollisionType.NONE)
             {
                 Y = 300;

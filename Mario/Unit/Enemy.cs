@@ -39,6 +39,18 @@ namespace Mario
             console.log("enemy is dead.");
         }
 
+        public override void MoveRight()
+        {
+            if (this.CollisionPrizes != CollisionType.LEFT && this.CollisionEnemies != CollisionType.LEFT)
+            {
+                this.X += STEP;
+            }
+            else
+            {
+                _motionState = Mario.MotionState.MovingLeft;
+            }
+        }
+
         public override void ColliseRight(Player p)
         {
             p.Dead();

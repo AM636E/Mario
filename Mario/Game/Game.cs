@@ -81,17 +81,7 @@ namespace Mario
             _gameLoop.Tick += new EventHandler(_gameLoop_Tick);
             _gameLoop.Start();
 
-            _player.MoveDownEvent += _player_MoveDownEvent;
             _player.Deading += (sender, e) => { MessageBox.Show("Aaa!  };"); };
-            _player.MoveUpEvent += _player_MoveUpEvent;
-            _player.Jumping += _player_Jumping;
-
-            _player.JumpingLeft += _player_JumpingLeft;
-        }
-
-        void _player_JumpingLeft(object sender, EventArgs e)
-        {
-
         }
 
         public delegate Enemy MapFunction(Enemy x);

@@ -80,7 +80,7 @@ namespace Mario
 
         public bool IsSpriteBottom(Sprite s)
         {
-            if (this.Rectangle.IntersectsWith(s.Rectangle) && this.Y <= s.Y)
+            if (this.Rectangle.IntersectsWith(s.Rectangle))
             {
                 return true;
             }

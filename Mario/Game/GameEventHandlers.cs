@@ -47,8 +47,10 @@ namespace Mario
             ActOnList(_enemyes, (enemy) => { enemy.CollisionEnemies = enemy.CheckCollision(_enemyes); enemy.CollisionPrizes = enemy.CheckCollision(_prizes); return enemy; });
 
             ActOnList(_enemyes, (enemy) => { enemy.MoveRight(); return enemy; });
+                
             _player.Move();
             _player.MoveDown();
+           
             _canvas.Invalidate();
         }
 

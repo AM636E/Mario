@@ -6,11 +6,11 @@ using System.Windows.Forms;
 
 namespace Mario
 {
-    public enum MotionState
+    public enum MotionState 
     {
+        MovingRight = 0,
+        MovingLeft = 1,
         Moving,
-        MovingLeft,
-        MovingRight,
         MovingUp,
         MovingDown,
         Jump,
@@ -110,9 +110,10 @@ namespace Mario
 
         public void MoveDown()
         {
+
             if (CollisionGround == CollisionType.NONE && CollisionPrizes == CollisionType.NONE)
             {
-                this.Y += 100;
+                Y = 300;
             }
         }
 

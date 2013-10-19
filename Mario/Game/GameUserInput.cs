@@ -23,6 +23,10 @@ namespace Mario
             {
                 _player = new Player(@"Images/Mario.jpg", 100, new System.Drawing.Point(0, 500 - 200));
             }
+            if(e.KeyCode == Keys.D)
+            {
+                console.log("start debug");
+            }
         }
 
         public void OnKeyUp(Object sender, KeyEventArgs e)

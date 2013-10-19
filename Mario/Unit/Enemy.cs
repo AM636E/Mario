@@ -19,19 +19,38 @@ namespace Mario
             : this(bitmapPath)
         {
             this.life = life;
+            _motionState = MotionState.MovingRight;
         }
 
         public Enemy(string bitmapPath, int life, System.Drawing.Point p)
             : base(bitmapPath, life)
         {
-            this.position = p;;
+            this.position = p;
+            _motionState = MotionState.MovingRight;
             movers.Add(Mario.MotionState.MovingLeft, this.MoveLeft);
             movers.Add(Mario.MotionState.MovingRight, this.MoveRight);
         }
 
-        public Enemy(Enemy copy)
+        public override bool MoveLeft()
         {
-            var a = new Enemy(copy.BitmapPath, copy.Life, new System.Drawing.Point(copy.X, copy.Y));
+            if (base.MoveLeft() != true )
+            {
+                _motionState = Mario.MotionState.MovingRight;
+                return false;
+            }
+
+            return true;
+        }
+
+        public override bool MoveRight()
+        {
+            if (base.MoveRight() != true)
+            {
+                _motionState = Mario.MotionState.MovingLeft;
+                return false;
+            }
+
+            return true;
         }
 
         public override void Dead()
@@ -39,22 +58,11 @@ namespace Mario
             console.log("enemy is dead.");
         }
 
-        public override void MoveRight()
-        {
-            if (this.CollisionPrizes != CollisionType.LEFT && this.CollisionEnemies != CollisionType.LEFT)
-            {
-                this.X += STEP;
-            }
-            else
-            {
-                _motionState = Mario.MotionState.MovingLeft;
-            }
-        }
-
         public override void ColliseRight(Player p)
         {
             p.Dead();
         }
+        
         public override void ColliseLeft(Player p)
         {
            p.Dead();

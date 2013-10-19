@@ -100,30 +100,26 @@ namespace Mario
         public const int MaxJumpHeight = 200;
         private int _plusY = -100;
 
-        public void MoveUp()
+        public bool MoveUp()
         {
             if (CollisionPrizes != CollisionType.UP)
             {
                 this.Y -= 200;
+                return true;
             }
+
+            return false;
         }
 
-        public void MoveDown()
+        public bool MoveDown()
         {
             if (CollisionGround == CollisionType.NONE && CollisionPrizes == CollisionType.NONE)
             {
-                Y = 300;
+                Y += 100;
+
+                return true;
             }
-        }
-
-        public override void MoveRight()
-        {
-            base.MoveRight();
-        }
-
-        public override void MoveLeft()
-        {
-            base.MoveLeft();
+            return false;
         }
 
         public void MoveDown(Sprite ground)
@@ -134,9 +130,9 @@ namespace Mario
             }
         }
 
-        public void Jump()
+        public bool Jump()
         {
-            MoveUp();
+            return MoveUp();
         }
 
         public void JumpLeft()

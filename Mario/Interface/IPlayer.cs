@@ -7,7 +7,7 @@ namespace Mario
 {
     interface IPlayer: IBoxer
     {
-        void MoveUp();
-        void MoveDown();
+        bool MoveUp();
+        bool MoveDown();
     }
 }

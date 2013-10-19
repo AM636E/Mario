@@ -13,7 +13,7 @@ namespace Mario
 
         public const int STEP = 20;//number of pixels unit that unit step have   
 
-        public delegate void Mover();
+        public delegate bool Mover();
 
         public MovableUnit()
             : base()
@@ -22,7 +22,7 @@ namespace Mario
         public MovableUnit(string bitmapPath) :
             base(bitmapPath)
         {
-            movers.Add(Mario.MotionState.NotMoving, delegate() { });
+            movers.Add(Mario.MotionState.NotMoving, delegate() { return false; });
         }
 
         public MovableUnit(string bitmapPath, int life)
@@ -33,20 +33,27 @@ namespace Mario
             : base(bitmapPath, life)
         { this.position = p; }
 
-        public virtual void MoveLeft()
+        public virtual bool MoveLeft()
         {
             if (this.CollisionPrizes != CollisionType.LEFT && this.CollisionEnemies != CollisionType.LEFT)
             {
                 this.X -= STEP;
+
+                return true;
             }
+
+            return false;
         }
 
-        public virtual void MoveRight()
+        public virtual bool MoveRight()
         {
             if (this.CollisionPrizes != CollisionType.RIGHT && this.CollisionEnemies != CollisionType.RIGHT)
             {
                 this.X += STEP;
+                return true;
             }
+
+            return false;
         }
 
         public override void Dead()
@@ -58,6 +65,7 @@ namespace Mario
         {
             try
             {
+                console.log(this, " moves ", _motionState);
                 this.movers[_motionState]();
             }
             catch

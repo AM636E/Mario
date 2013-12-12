@@ -11,25 +11,24 @@ namespace Mario
 {
     public partial class Form1 : Form
     {
-        Game _game;
-        
         public Form1()
         {
             InitializeComponent();
+            this.Width = 5000;
+            this.Invalidate();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _game = new Game(this, 1000, 500);
-            _game.Start();
-            _game.GameLoopInterval = 100;
-
-            this.KeyDown += _game.OnKeyDown;
+            this.Invalidate();
+            this.Paint += Form1_Paint;
         }
 
-        private void Form1_Paint(object sender, PaintEventArgs e)
+        void Form1_Paint(object sender, PaintEventArgs e)
         {
-            _game.UpdateView();
+            Ball b = new Ball(new Point(00, 00), 80);
+
+            b.Draw(e.Graphics);
         }
     }
 }

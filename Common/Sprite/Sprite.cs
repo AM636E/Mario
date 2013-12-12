@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace Mario
+namespace Common.Sprites
 {
     public enum CollisionType 
     {
@@ -16,7 +16,7 @@ namespace Mario
         BOTTOM,
     }
 
-    public  abstract class Sprite
+    public abstract class Sprite
     {
         public event EventHandler OnNeedUpdate;
 
@@ -25,10 +25,10 @@ namespace Mario
         protected int height;
 
         public Point Position { get { return position; } }
-        public int X { get { return position.X; } set { position.X = value; NeedUpdate = true; } }
-        public int Y { get { return position.Y; } set { position.Y = value; NeedUpdate = true; } }
-        public int Width { get { return width; } }
-        public int Height { get { return height; } }
+        public virtual int X { get { return position.X; } set { position.X = value; NeedUpdate = true; } }
+        public virtual int Y { get { return position.Y; } set { position.Y = value; NeedUpdate = true; } }
+        public virtual int Width { get { return width; } }
+        public virtual int Height { get { return height; } }
         public int UpRightX { get { return X + width; } }
         public int DownRightX { get { return Y + height + width; } }
 
@@ -54,6 +54,7 @@ namespace Mario
 
         public Sprite()
         {
+            
             position = new Point();
             isNeedUpdate = true;
         }

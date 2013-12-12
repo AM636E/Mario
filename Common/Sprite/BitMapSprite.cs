@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace Mario
+namespace Common.Sprites
 {
     public class BitMapSprite : Sprite
     {
